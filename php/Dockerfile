@@ -1,52 +1,6 @@
 FROM stephaneeybert/httpd:2.4.25
 
 
-# Installing jpeg
-
-WORKDIR /usr/bin/
-COPY jpegsrc.v9b.tar.gz /usr/bin/
-RUN gzip -d jpegsrc.v9b.tar.gz \
-  && tar -xvf jpegsrc.v9b.tar \
-  && ln -s jpeg-9b jpeg
-WORKDIR /usr/bin/jpeg/
-RUN ./configure --enable-shared \
-  && make \
-  && make install \
-  && make clean
-
-
-# Installing libpng
-
-WORKDIR /usr/bin/
-COPY libpng-1.6.29.tar.gz /usr/bin/
-RUN gzip -d libpng-1.6.29.tar.gz \
-  && tar -xvf libpng-1.6.29.tar \
-  && ln -s libpng-1.6.29 libpng
-WORKDIR /usr/bin/libpng/
-RUN ./configure \
-  --with-zlib-prefix=/usr
-RUN make \
-  && make install \
-  && make clean
-
-
-# Installing freetype
-
-RUN apt-get install -y libbz2-dev
-
-WORKDIR /usr/bin/
-COPY freetype-2.8.tar.gz /usr/bin/
-RUN gzip -d freetype-2.8.tar.gz \
-  && tar -xvf freetype-2.8.tar \
-  && ln -s freetype-2.8 freetype
-WORKDIR /usr/bin/freetype/
-RUN ./configure \
-  --with-bzip2 \
-  && make \
-  && make install \
-  && make clean
-
-
 # Installing the mysql client for php
 
 RUN apt-get install -y libncurses-dev
@@ -77,9 +31,76 @@ RUN make \
   && make clean
 
 
+# Installing jpeg
+
+WORKDIR /usr/bin/
+COPY jpegsrc.v9b.tar.gz /usr/bin/
+RUN gzip -d jpegsrc.v9b.tar.gz \
+  && tar -xvf jpegsrc.v9b.tar \
+  && ln -s jpeg-9b jpeg
+WORKDIR /usr/bin/jpeg/
+RUN ./configure --enable-shared \
+  && make \
+  && make install \
+  && make clean
+
+
+# Installing libpng
+
+WORKDIR /usr/bin/
+COPY libpng-1.6.29.tar.gz /usr/bin/
+RUN gzip -d libpng-1.6.29.tar.gz \
+  && tar -xvf libpng-1.6.29.tar \
+  && ln -s libpng-1.6.29 libpng
+WORKDIR /usr/bin/libpng/
+RUN ./configure \
+  --with-zlib-prefix=/usr \
+  && make \
+  && make install \
+  && make clean
+
+
+# Installing freetype
+
+RUN apt-get install -y libbz2-dev
+
+WORKDIR /usr/bin/
+COPY freetype-2.8.tar.gz /usr/bin/
+RUN gzip -d freetype-2.8.tar.gz \
+  && tar -xvf freetype-2.8.tar \
+  && ln -s freetype-2.8 freetype
+WORKDIR /usr/bin/freetype/
+RUN ./configure \
+  --with-bzip2 \
+  && make \
+  && make install \
+  && make clean
+
+
+# Installing gd
+
+RUN apt-get install -y \
+  libxpm-dev
+
+WORKDIR /usr/bin/
+COPY libgd-2.2.4.tar.gz /usr/bin/
+RUN gzip -d libgd-2.2.4.tar.gz \
+  && tar -xvf libgd-2.2.4.tar \
+  && ln -s libgd-2.2.4 libgd
+WORKDIR /usr/bin/libgd/
+RUN ./configure \
+  --with-jpeg=/usr/local \
+  --with-png=/usr/local \
+  --with-freetype=/usr/local \
+  --with-zlib=/usr/local \
+  --with-xpm=/usr/local \
+  && make \
+  && make install \
+  && make clean
+
+
 # Installing php
 
-RUN apt-get update
 RUN apt-get install -y \
   libxml2-dev libxslt-dev \
   libicu-dev \
@@ -104,7 +125,7 @@ RUN ./configure \
   --with-zlib-dir=/usr \
   --with-jpeg-dir=/usr \
   --with-png-dir=/usr \
-  --with-gd \
+  --with-gd=/usr/local \
   --enable-gd-native-ttf \
   --with-freetype-dir=/usr \
   --enable-ftp \
