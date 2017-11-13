@@ -1,0 +1,31 @@
+version: "3"
+services:
+  learnintouch-startup:
+    image: localhost:5000/learnintouch-startup
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/data:/usr/bin/learnintouch/www/learnintouch.com/account/data"
+      - "~/dev/docker/projects/learnintouch/volumes/www.thalasoft/account/data:/usr/bin/learnintouch/www/thalasoft.com/account/data"
+      - "~/dev/docker/projects/learnintouch/volumes/www.folkuniversitet/account/data:/usr/bin/learnintouch/www/folkuniversitet/account/data"
+      - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
+      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/apache/logs"
+      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/learnintouch/logs"
+    ports:
+      - "81:80"
+  nodejs-learnintouch:
+    image: localhost:5000/nodejs-learnintouch
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
+      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/learnintouch/logs"
+    ports:
+      - "9001:9001"
+  mysql:
+    image: localhost:5000/mariadb:10.1.24
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
+      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"
+  redis:
+    image: localhost:5000/redis:3.0.7
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/redis/install/var/logs"

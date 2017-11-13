@@ -1,0 +1,6 @@
+volumes
+*.sql
+*.zip
+*.tar
+*.gz
+*.svn

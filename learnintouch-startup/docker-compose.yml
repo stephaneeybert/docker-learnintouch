@@ -1,0 +1,39 @@
+version: "3"
+services:
+  learnintouch-startup:
+    image: thalasoft.com:5000/learnintouch-startup
+    container_name: learnintouch-startup
+    restart: always
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
+      - "~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/data:/usr/bin/learnintouch/www/learnintouch.com/account/data"
+      - "~/dev/docker/projects/learnintouch/volumes/www.thalasoft/account/data:/usr/bin/learnintouch/www/thalasoft.com/account/data"
+      - "~/dev/docker/projects/learnintouch/volumes/www.folkuniversitet/account/data:/usr/bin/learnintouch/www/folkuniversitet/account/data"
+    ports:
+      - "80:80"
+    links:
+      - mysql
+      - redis
+      - nodejs-learnintouch      
+  nodejs-learnintouch:
+    image: thalasoft.com:5000/nodejs-learnintouch
+    container_name: nodejs-learnintouch
+    restart: always
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
+    ports:
+      - "9001:9001"
+    links:
+      - redis
+  mysql:
+    image: thalasoft.com:5000/mariadb:10.1.24
+    container_name: mysql  
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
+  redis:
+    image: thalasoft.com:5000/redis:3.0.7
+    container_name: redis  
+    restart: always

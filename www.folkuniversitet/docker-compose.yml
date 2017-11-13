@@ -1,0 +1,14 @@
+version: "3"
+services:
+  www.folkuniversitet:
+    image: thalasoft.com:5000/www.folkuniversitet
+    container_name: www.folkuniversitet
+    links:
+      - mysql
+  mysql:
+    image: thalasoft.com:5000/mysql:5.6.30
+    container_name: mysql  
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mysql/install/data"
