@@ -1,4 +1,4 @@
-FROM stephaneeybert/php:5.6.20
+FROM stephaneeybert/php:5.6.32
 
 RUN apt-get install -y unzip \
   && apt-get install -y --no-install-recommends apt-utils \

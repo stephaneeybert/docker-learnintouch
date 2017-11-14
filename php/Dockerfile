@@ -108,16 +108,16 @@ RUN apt-get install -y \
   openssl libssl-dev libcurl4-openssl-dev
 
 WORKDIR /usr/bin/
-COPY php-5.6.20.tar.gz /usr/bin/
-RUN gzip -d php-5.6.20.tar.gz \
-  && tar -xvf php-5.6.20.tar \
-  && ln -s php-5.6.20 php
+COPY php-5.6.32.tar.gz /usr/bin/
+RUN gzip -d php-5.6.32.tar.gz \
+  && tar -xvf php-5.6.32.tar \
+  && ln -s php-5.6.32 php
 
 WORKDIR /usr/bin/php/
 RUN ./configure \
   --prefix=/usr/bin/php/install \
   --with-apxs2=/usr/bin/apache/bin/apxs \
-  --with-config-file-path=/usr/bin/php-5.6.20/ \
+  --with-config-file-path=/usr/bin/php-5.6.32/ \
   --enable-libgcc \
   --with-mysql=/usr/bin/mysql/install/ \
   --with-mysqli=/usr/bin/mysql/install/bin/mysql_config \
@@ -167,10 +167,10 @@ RUN chmod a+x /usr/bin/php/scripts/phpize \
 
 ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
 
-# Build the container: docker build -t stephaneeybert/php:5.6.20 .
-# Rename the image: docker tag stephaneeybert/php:5.6.20 thalasoft.com:5000/php:5.6.20
-# Push the image: docker push thalasoft.com:5000/php:5.6.20
-# Run the container: docker run -d -p 81:80 --name httpd stephaneeybert/php:5.6.20
+# Build the container: docker build -t stephaneeybert/php:5.6.32 .
+# Rename the image: docker tag stephaneeybert/php:5.6.32 thalasoft.com:5000/php:5.6.32
+# Push the image: docker push thalasoft.com:5000/php:5.6.32
+# Run the container: docker run -d -p 81:80 --name httpd stephaneeybert/php:5.6.32
 # Check that the port is open: nmap -p 81 localhost
 # Open a shell in the container: docker exec -it httpd bash
 
