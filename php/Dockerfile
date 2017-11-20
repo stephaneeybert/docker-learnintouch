@@ -149,11 +149,11 @@ RUN mkdir /usr/bin/php/tmp \
 
 RUN apt-get install -y autoconf
 
-COPY phpredis-2.2.7.tar.gz /usr/bin
+COPY phpredis-3.1.4.tar.gz /usr/bin
 WORKDIR /usr/bin
-RUN gzip -d phpredis-2.2.7.tar.gz \
-  && tar -xvf phpredis-2.2.7.tar \
-  && ln -s phpredis-2.2.7 phpredis
+RUN gzip -d phpredis-3.1.4.tar.gz \
+  && tar -xvf phpredis-3.1.4.tar \
+  && ln -s phpredis-3.1.4 phpredis
 WORKDIR /usr/bin/phpredis
 RUN chmod a+x /usr/bin/php/scripts/phpize \
   && sleep 1 \
