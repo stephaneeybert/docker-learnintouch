@@ -11,17 +11,35 @@ services:
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/learnintouch/logs"
     ports:
       - "80:80"
+    networks:
+      - learnintouch
   nodejs-learnintouch:
     image: thalasoft.com:5000/nodejs-learnintouch
+    networks:
+      - learnintouch
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/learnintouch/logs"
     ports:
       - "9001:9001"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 10s
+    healthcheck:
+      test: curl --fail http://127.0.0.1:9001/ping || exit 1
+      interval: 5s
+      timeout: 10s
+      retries: 3
   mysql:
     image: thalasoft.com:5000/mariadb:10.1.24
     environment:
       - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - learnintouch
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"
@@ -29,4 +47,7 @@ services:
     image: thalasoft.com:5000/redis:3.0.7
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/redis/install/var/logs"
-
+    networks:
+      - learnintouch
+networks:
+  learnintouch:
