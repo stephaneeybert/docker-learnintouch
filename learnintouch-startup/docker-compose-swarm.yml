@@ -49,5 +49,9 @@ services:
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/redis/install/var/logs"
     networks:
       - learnintouch
+  logrotate:
+    image: thalasoft.com:5000/logrotate
+    networks:
+      - learnintouch
 networks:
   learnintouch:
