@@ -6,7 +6,7 @@ RUN apt-get update \
 
 WORKDIR /etc/logrotate.d/
 
-COPY httpd.rotate.conf mariadb.rotate.conf /etc/logrotate.d/
+COPY httpd.logrotate.conf mariadb.logrotate.conf nodejs.logrotate.conf /etc/logrotate.d/
 
 ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
 
