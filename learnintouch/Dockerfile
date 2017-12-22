@@ -12,6 +12,9 @@ RUN apt-get install -y unzip \
   && localedef -i sv_SE -f UTF-8 sv_SE.UTF-8 \
   && localedef -i nn_NO -f UTF-8 nn_NO.UTF-8
 
+# The backup module uses the wget command to do an asynchronous database backup
+RUN apt-get install -y wget
+
 COPY httpd.conf /usr/bin/apache/conf
 COPY php.ini /usr/bin/php
 
