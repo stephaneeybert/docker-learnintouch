@@ -32,6 +32,9 @@ COPY startup.sh install/startup.sh
 COPY my.cnf install/my.cnf
 RUN ln -s /usr/bin/mariadb/install/my.cnf ~/.my.cnf
 
+COPY db-health-check.sh /usr/bin/learnintouch/
+RUN chmod 755 /usr/bin/learnintouch/db-health-check.sh
+
 #ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
 ENTRYPOINT ["/bin/bash", "install/startup.sh"]
 

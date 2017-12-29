@@ -43,6 +43,18 @@ services:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3 
+        window: 10s
+    healthcheck:
+      test: /usr/bin/learnintouch/db-health-check.sh
+      interval: 5s
+      timeout: 10s
+      retries: 3  
   redis:
     image: localhost:5000/redis:3.0.7
     volumes:
