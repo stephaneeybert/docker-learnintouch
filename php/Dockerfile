@@ -101,7 +101,8 @@ RUN ./configure \
 
 # Installing php
 
-RUN apt-get install -y \
+RUN apt-get update \
+  && apt-get install -y \
   libxml2-dev libxslt-dev \
   libicu-dev \
   pkg-config \
