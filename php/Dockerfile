@@ -65,10 +65,10 @@ RUN ./configure \
 RUN apt-get install -y libbz2-dev
 
 WORKDIR /usr/bin/
-COPY freetype-2.8.tar.gz /usr/bin/
-RUN gzip -d freetype-2.8.tar.gz \
-  && tar -xvf freetype-2.8.tar \
-  && ln -s freetype-2.8 freetype
+COPY freetype-2.7.1.tar.gz /usr/bin/
+RUN gzip -d freetype-2.7.1.tar.gz \
+  && tar -xvf freetype-2.7.1.tar \
+  && ln -s freetype-2.7.1 freetype
 WORKDIR /usr/bin/freetype/
 RUN ./configure \
   --with-bzip2 \
@@ -83,10 +83,10 @@ RUN apt-get install -y \
   libxpm-dev
 
 WORKDIR /usr/bin/
-COPY libgd-2.2.4.tar.gz /usr/bin/
-RUN gzip -d libgd-2.2.4.tar.gz \
-  && tar -xvf libgd-2.2.4.tar \
-  && ln -s libgd-2.2.4 libgd
+COPY libgd-2.2.5.tar.gz /usr/bin/
+RUN gzip -d libgd-2.2.5.tar.gz \
+  && tar -xvf libgd-2.2.5.tar \
+  && ln -s libgd-2.2.5 libgd
 WORKDIR /usr/bin/libgd/
 RUN ./configure \
   --with-jpeg=/usr/local \
