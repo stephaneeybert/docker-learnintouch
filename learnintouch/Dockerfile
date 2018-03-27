@@ -1,6 +1,8 @@
 FROM stephaneeybert/php:5.6.32
 
-RUN apt-get install -y unzip \
+RUN apt-get update \
+  && apt-get install -y unzip \
+  && apt-get install -y curl \
   && apt-get install -y --no-install-recommends apt-utils \
   && apt-get install -y locales \
   && locale-gen en_GB \
