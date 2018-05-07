@@ -5,3 +5,4 @@ Open the website
 http://www.thalasoft.com
 http://www.thalasoft.com/admin.php
 
+View the www.learnintouch/README.md file

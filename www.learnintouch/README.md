@@ -1,4 +1,13 @@
-The docker-compose is used only to create and seed the learnintouch.com database. For this operation, it only needs the MySql dependency.
+Make sure to have the entry:
+learnintouch.com in the virtual host
+or the entry:
+127.0.1.1 dev.learnintouch.com in the /etc/hosts file
+
+Open the website
+http://dev.learnintouch.com:81
+http://dev.learnintouch.com:81/admin.php
+http://www.learnintouch.com
+http://www.learnintouch.com/admin.php
 
 Change some configuration if the setup/properties.php file
 
@@ -6,14 +15,14 @@ The specific.php file must use the 'mysql' host for the DB_HOST value
 The hostname is given by Docker and is the name of the container running MySQL
 define('DB_HOST', "mysql");
 
-Remove the existing data
+Removing the existing data
 cd /home/stephane/dev/php/learnintouch/docker
 sudo rm -fr mysql/
 
-Copy any existing website data into an external volume
-mkdir -p /home/stephane/dev/php/learnintouch/docker/website/
-cp data.zip /home/stephane/dev/php/learnintouch/docker/website/
-cd /home/stephane/dev/php/learnintouch/docker/website/
+Copying any existing website data into an external volume
+mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account
+cp data.zip ~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account
+cd ~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account
 unzip data.zip
 rm data.zip
 
@@ -41,7 +50,8 @@ docker exec -it learnintouch-startup bash
 /usr/bin/mysql/install/bin/mysqldump --protocol=tcp -h mysql -P 3306 -u root -p --default-character-set=latin1 --skip-extended-insert --no-create-info db_learnintouch -v > /usr/bin/learnintouch/db-data.sql
 docker cp learnintouch-startup:/usr/bin/learnintouch/db-data.sql www.learnintouch/
 
-Install the application
+Installing the database for the website
+The docker-compose is used only to create and seed the learnintouch.com database. For this operation, it only needs the MySql dependency.
 cd /home/stephane/dev/docker/projects/www.learnintouch
 docker-compose up
 
