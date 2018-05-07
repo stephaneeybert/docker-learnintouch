@@ -1,5 +1,8 @@
 FROM stephaneeybert/www.learnintouch
 
+COPY vhost.conf /tmp
+RUN cat /tmp/vhost.conf >> /usr/bin/apache/conf/extra/httpd-vhosts.conf && rm -f /tmp/vhost.conf
+
 RUN mkdir -p /usr/bin/learnintouch/www/thalasoft.com/account
 WORKDIR /usr/bin/learnintouch/www/thalasoft.com
 RUN ln -s /usr/bin/learnintouch/engine/admin.php admin.php \
