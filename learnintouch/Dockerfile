@@ -18,6 +18,7 @@ RUN apt-get update \
 RUN apt-get install -y wget
 
 COPY httpd.conf /usr/bin/apache/conf
+COPY httpd-ssl.conf /usr/bin/apache/conf/extra
 COPY php.ini /usr/bin/php
 
 RUN mkdir -p /usr/bin/learnintouch/tmp \
