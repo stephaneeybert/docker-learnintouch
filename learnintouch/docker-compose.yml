@@ -14,3 +14,4 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mysql/install/data"
+      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"
