@@ -33,6 +33,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
+      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"
   redis:
     image: localhost:5000/redis:3.0.7
     container_name: redis
