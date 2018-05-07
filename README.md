@@ -8,3 +8,5 @@ Another way to start the dev application locally
 ```cd ~/dev/docker/projects/learnintouch/learnintouch-startup```  
 ```docker-compose -f docker-compose-dev.yml up -d```  
 
+and to stop it
+docker-compose down
