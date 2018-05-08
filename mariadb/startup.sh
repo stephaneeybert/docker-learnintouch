@@ -13,7 +13,9 @@ if [ ! -f /usr/bin/mariadb/install/data/ibdata1 ]; then
 
   /usr/bin/mariadb/install/bin/mysqld_safe --defaults-file=/usr/bin/mariadb/install/my.cnf &
   sleep 10s
-  echo "GRANT ALL ON *.* TO root@'%' IDENTIFIED BY 'root' WITH GRANT OPTION; FLUSH PRIVILEGES" | /usr/bin/mariadb/install/bin/mysql
+  echo "grant all on *.* to root@'%' identified by 'root' with grant option; flush privileges;" | /usr/bin/mariadb/install/bin/mysql
+  echo "delete from user where User = 'root' and Host != '%'; flush privileges;" | /usr/bin/mariadb/install/bin/mysql
+  echo "delete from user where User = ''; flush privileges;" | /usr/bin/mariadb/install/bin/mysql
   tail -f /etc/hosts
 else
   /usr/bin/mariadb/install/bin/mysqld_safe --defaults-file=/usr/bin/mariadb/install/my.cnf
