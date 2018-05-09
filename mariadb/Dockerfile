@@ -13,7 +13,11 @@ RUN gzip -d mariadb-10.1.24.tar.gz \
   && ln -s mariadb-10.1.24 mariadb
 
 WORKDIR /usr/bin/mariadb/
-RUN mkdir install && mkdir install/data && mkdir install/var && mkdir install/etc && mkdir install/tmp
+RUN mkdir install \
+  && mkdir install/data \
+  && mkdir install/var \
+  && mkdir install/etc \
+  && mkdir install/tmp
 
 RUN cd /usr/bin/mariadb/ \
   && cmake \
