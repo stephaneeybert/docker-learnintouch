@@ -5,28 +5,28 @@ FROM stephaneeybert/httpd:2.4.25
 
 RUN apt-get install -y libncurses-dev
 
-COPY mysql-5.6.30.tar.gz /usr/bin/
+COPY mariadb-10.1.24.tar.gz /usr/bin/
 WORKDIR /usr/bin/
-RUN gzip -d mysql-5.6.30.tar.gz \
-  && tar -xvf mysql-5.6.30.tar \
-  && ln -s mysql-5.6.30 mysql
+RUN gzip -d mariadb-10.1.24.tar.gz \
+  && tar -xvf mariadb-10.1.24.tar \
+  && ln -s mariadb-10.1.24 mariadb
 
-WORKDIR /usr/bin/mysql/
+WORKDIR /usr/bin/mariadb/
 RUN mkdir install \
   && mkdir install/data \
   && mkdir install/var \
   && mkdir install/etc \ 
   && mkdir install/tmp
 
-RUN cd /usr/bin/mysql/; cmake \
-  -DCMAKE_INSTALL_PREFIX=/usr/bin/mysql/install \
+RUN cd /usr/bin/mariadb/ \
+  && cmake \
+  -DCMAKE_INSTALL_PREFIX=/usr/bin/mariadb/install \
   -DWITH_INNOBASE_STORAGE_ENGINE=1 \
-  -DMYSQL_DATADIR=/usr/bin/mysql/install/data \
+  -DMYSQL_DATADIR=/usr/bin/mariadb/install/data \
   -DDOWNLOAD_BOOST=1 \
-  -DWITH_BOOST=/usr/bin/mysql/install/boost \
-  -DMYSQL_UNIX_ADDR=/usr/bin/mysql/install/tmp/mysql.sock
-
-RUN make \
+  -DWITH_BOOST=/usr/bin/mariadb/install/boost \
+  -DMYSQL_UNIX_ADDR=/usr/bin/mariadb/install/tmp/mariadb.sock \
+  && make \
   && make install \
   && make clean
 
@@ -120,9 +120,9 @@ RUN ./configure \
   --with-apxs2=/usr/bin/apache/bin/apxs \
   --with-config-file-path=/usr/bin/php-5.6.32/ \
   --enable-libgcc \
-  --with-mysql=/usr/bin/mysql/install/ \
-  --with-mysqli=/usr/bin/mysql/install/bin/mysql_config \
-  --with-pdo-mysql=/usr/bin/mysql/install/ \
+  --with-mysql=/usr/bin/mariadb/install/ \
+  --with-mysqli=/usr/bin/mariadb/install/bin/mysql_config \
+  --with-pdo-mysql=/usr/bin/mariadb/install/ \
   --with-zlib-dir=/usr \
   --with-jpeg-dir=/usr \
   --with-png-dir=/usr \

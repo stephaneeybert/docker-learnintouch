@@ -13,7 +13,7 @@ ENTRYPOINT ["/bin/bash", "/usr/bin/apache/bin/apachectl", "start", "-D FOREGROUN
 # Open a shell in the container: docker exec -it learnintouch-startup bash
 # tail -400f /usr/bin/learnintouch/php_error_log
 # tail -400f /usr/bin/apache/logs/error_log
-# Connect to MySQL: /usr/bin/mysql/install/bin/mysql -h mysql -P 3306 --protocol=tcp -u learnintouch -p
+# Connect to MySQL: /usr/bin/mariadb/install/bin/mysql -h mysql -P 3306 --protocol=tcp -u learnintouch -p
 
 # On the droplet
 
@@ -25,7 +25,7 @@ ENTRYPOINT ["/bin/bash", "/usr/bin/apache/bin/apachectl", "start", "-D FOREGROUN
 # docker exec -it learnintouch_mysql.1.uc4gosi409o7809w2wbaptnfs bash
 # install/bin/mysql -h mysql -P 3306 --protocol=tcp -u learnintouch -p
 # docker exec -it learnintouch_learnintouch-startup.1.6o726ejzt9t9unrd47dlio21x bash
-# /usr/bin/mysql/install/bin/mysql -h mysql -P 3306 --protocol=tcp -u learnintouch -p
+# /usr/bin/mariadb/install/bin/mysql -h mysql -P 3306 --protocol=tcp -u learnintouch -p
 
 # Checking the Apache configuration
 # docker exec -it learnintouch_learnintouch-startup.1.6o726ejzt9t9unrd47dlio21x bash

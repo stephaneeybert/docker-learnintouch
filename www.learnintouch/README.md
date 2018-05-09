@@ -28,8 +28,8 @@ rm data.zip
 
 Creating the structure and data files
 Run these sql statements in the learnintouch-startup container, logged into its bash:
-/usr/bin/mysql/install/bin/mysqldump -h mysql -P 3306 --protocol=tcp -u root -p --default-character-set=latin1 --skip-extended-insert --add-drop-table --no-data db_learnintouch > /usr/bin/learnintouch/www/learnintouch.com/account/data/backup/db_learnintouch-structure.sql
-/usr/bin/mysql/install/bin/mysqldump -h mysql -P 3306 --protocol=tcp -u root -p --default-character-set=latin1 --skip-extended-insert --no-create-info db_learnintouch > /usr/bin/learnintouch/www/learnintouch.com/account/data/backup/db_learnintouch.sql
+/usr/bin/mariadb/install/bin/mysqldump -h mysql -P 3306 --protocol=tcp -u root -p --default-character-set=latin1 --skip-extended-insert --add-drop-table --no-data db_learnintouch > /usr/bin/learnintouch/www/learnintouch.com/account/data/backup/db_learnintouch-structure.sql
+/usr/bin/mariadb/install/bin/mysqldump -h mysql -P 3306 --protocol=tcp -u root -p --default-character-set=latin1 --skip-extended-insert --no-create-info db_learnintouch > /usr/bin/learnintouch/www/learnintouch.com/account/data/backup/db_learnintouch.sql
 Add the instructions to the db_learnintouch.sql file
 set autocommit = 0;
 set unique_checks = 0;
@@ -42,12 +42,12 @@ Rebuild the docker image
 
 Doing a dump of the structure
 docker exec -it learnintouch-startup bash
-/usr/bin/mysql/install/bin/mysqldump --protocol=tcp -h mysql -P 3306 -u root -p --default-character-set=latin1 --skip-extended-insert --add-drop-table --no-data db_learnintouch -v > /usr/bin/learnintouch/db-structure.sql
+/usr/bin/mariadb/install/bin/mysqldump --protocol=tcp -h mysql -P 3306 -u root -p --default-character-set=latin1 --skip-extended-insert --add-drop-table --no-data db_learnintouch -v > /usr/bin/learnintouch/db-structure.sql
 docker cp learnintouch-startup:/usr/bin/learnintouch/db-structure.sql www.learnintouch/
 
 Doing a dump of the data
 docker exec -it learnintouch-startup bash
-/usr/bin/mysql/install/bin/mysqldump --protocol=tcp -h mysql -P 3306 -u root -p --default-character-set=latin1 --skip-extended-insert --no-create-info db_learnintouch -v > /usr/bin/learnintouch/db-data.sql
+/usr/bin/mariadb/install/bin/mysqldump --protocol=tcp -h mysql -P 3306 -u root -p --default-character-set=latin1 --skip-extended-insert --no-create-info db_learnintouch -v > /usr/bin/learnintouch/db-data.sql
 docker cp learnintouch-startup:/usr/bin/learnintouch/db-data.sql www.learnintouch/
 
 Installing the database for the website
