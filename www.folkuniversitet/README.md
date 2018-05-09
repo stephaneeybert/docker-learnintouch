@@ -8,5 +8,5 @@ http://folkuniversitet.thalasoft.com/admin.php
 View the www.learnintouch/README.md file
 
 Installing the website
-docker stack deploy --compose-file docker-compose-dev.yml folkuniversitet
-docker stack rm folkuniversitet
+docker stack deploy --compose-file docker-compose-dev.yml wwwfolkuniversitet
+docker stack rm wwwfolkuniversitet
