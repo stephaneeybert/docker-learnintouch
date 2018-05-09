@@ -37,6 +37,8 @@ RUN mkdir /usr/bin/learnintouch/logs \
 
 RUN groupadd -f apache && useradd -d /usr/bin/learnintouch/ -g apache apache
 
+COPY expand-secrets.sh /usr/bin/learnintouch/
+
 COPY db_engine-db.sql /usr/bin/learnintouch/
 COPY db_engine-structure.sql /usr/bin/learnintouch/
 COPY db_engine.sql /usr/bin/learnintouch/
@@ -48,8 +50,8 @@ RUN chown -R apache:apache /usr/bin/learnintouch/ \
 
 COPY httpd-vhosts.conf /usr/bin/apache/conf/extra
 
-ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
-#ENTRYPOINT ["/bin/bash", "/usr/bin/learnintouch/engine-db-seed.sh"]
+#ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
+ENTRYPOINT ["/bin/bash", "/usr/bin/learnintouch/engine-db-seed.sh"]
 
 # Build the container: docker build -t stephaneeybert/learnintouch .
 # Rename the image: docker tag stephaneeybert/learnintouch thalasoft.com:5000/learnintouch
