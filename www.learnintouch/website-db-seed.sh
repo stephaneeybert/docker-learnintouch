@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 # Give some time to the MySQL server to start before executing the following scripts
 sleep 30s
