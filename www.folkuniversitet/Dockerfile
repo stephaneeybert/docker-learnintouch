@@ -25,8 +25,8 @@ COPY db-data.sql /usr/bin/learnintouch/www/folkuniversitet/
 
 COPY website-db-seed.sh /usr/bin/learnintouch/www/folkuniversitet/
 
-ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
-#ENTRYPOINT ["/bin/bash", "/usr/bin/learnintouch/www/folkuniversitet/website-db-seed.sh"]
+#ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
+ENTRYPOINT ["/bin/bash", "/usr/bin/learnintouch/www/folkuniversitet/website-db-seed.sh"]
 
 # Build the container: docker build -t stephaneeybert/www.folkuniversitet .
 # Rename the image: docker tag stephaneeybert/www.folkuniversitet thalasoft.com:5000/www.folkuniversitet
