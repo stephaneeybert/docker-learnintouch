@@ -53,7 +53,10 @@ docker cp learnintouch-startup:/usr/bin/learnintouch/db-data.sql www.learnintouc
 Installing the database for the website
 The docker-compose is used only to create and seed the learnintouch.com database. For this operation, it only needs the MySql dependency.
 cd /home/stephane/dev/docker/projects/www.learnintouch
-docker-compose up
+
+Installing the website
+docker stack deploy --compose-file docker-compose-dev.yml wwwlearnintouch
+docker stack rm wwwlearnintouch
 
 View the completion of the installation
 The docker-compose ps command should display an Exit 0 state for the www.learnintouch container
@@ -62,7 +65,4 @@ $ docker-compose ps
 -----------------------------------------------------------------------------------
 learnintouch.com   /bin/bash /usr/bin/learnin ...   Exit 0                         
 mysql              /bin/bash install/startup.sh     Up       0.0.0.0:3307->3306/tcp
-
-Delete the containers after the installation is complete
-docker-compose down
 

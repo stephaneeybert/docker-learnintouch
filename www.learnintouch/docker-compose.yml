@@ -2,10 +2,15 @@ version: "3.1"
 services:
   learnintouch:
     image: thalasoft.com:5000/www.learnintouch
+    secrets:
+      - DB_ROOT_PASSWORD
   mysql:
     image: thalasoft.com:5000/mariadb:10.1.24
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
+    secrets:
+      - DB_ROOT_PASSWORD
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"
+secrets:
+  DB_ROOT_PASSWORD:
+    external: true
