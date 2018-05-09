@@ -1,13 +1,9 @@
-version: "3"
+version: "3.1"
 services:
-  www.folkuniversitet:
+  folkuniversitet:
     image: thalasoft.com:5000/www.folkuniversitet
-    container_name: www.folkuniversitet
-    links:
-      - mysql
   mysql:
     image: thalasoft.com:5000/mariadb:10.1.24
-    container_name: mysql  
     environment:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
