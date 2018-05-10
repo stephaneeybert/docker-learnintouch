@@ -10,6 +10,9 @@ Installing the common database
 docker stack deploy --compose-file docker-compose-dev.yml wwwthalasoft
 docker stack rm wwwthalasoft
 
+Creating the secrets
+./docker-secrets.sh
+
 View the completion of the installation
 The docker-compose ps command should display an Exit 0 state for the learnintouch container
 
