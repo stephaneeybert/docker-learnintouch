@@ -10,3 +10,6 @@ View the www.learnintouch/README.md file
 Installing the website
 docker stack deploy --compose-file docker-compose-dev.yml wwwfolkuniversitet
 docker stack rm wwwfolkuniversitet
+
+Creating the secrets
+./docker-secrets.sh
