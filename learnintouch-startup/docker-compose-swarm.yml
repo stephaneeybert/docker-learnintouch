@@ -50,8 +50,6 @@ services:
     image: thalasoft.com:5000/mariadb:10.1.24
     networks:
       - learnintouch
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"
