@@ -45,7 +45,7 @@ ENTRYPOINT ["/bin/bash", "install/startup.sh"]
 # Build the container: docker build -t stephaneeybert/mariadb:10.1.24 .
 # Rename the image: docker tag stephaneeybert/mariadb:10.1.24 thalasoft.com:5000/mariadb:10.1.24
 # Push the image: docker push thalasoft.com:5000/mariadb:10.1.24
-# Run the container (The data volume allows for data persistence after a container deletion): docker run -d -p 3307:3306 -v /home/stephane/dev/php/learnintouch/docker/volumes/database/data:/usr/bin/mariadb/install/data --name mariadb stephaneeybert/mariadb:10.1.24
+# Run the container (The data volume allows for data persistence after a container deletion): docker run -d -p 3307:3306 -v /home/stephane/dev/php/learnintouch/docker/volumes/database/data:/usr/bin/mariadb/install/data -v /home/stephane/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs --name mariadb stephaneeybert/mariadb:10.1.24
 # Check that the host port is open: nmap -p 3307 localhost
 # Open a shell in the container: docker exec -it mariadb bash
 # Open a mariadb client: /usr/bin/mariadb/install/bin/mysql -u root -p
