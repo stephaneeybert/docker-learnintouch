@@ -10,14 +10,13 @@ http://www.learnintouch.com
 http://www.learnintouch.com/admin.php
 
 Change some configuration if the setup/properties.php file
-
 The specific.php file must use the 'mysql' host for the DB_HOST value
 The hostname is given by Docker and is the name of the container running MySQL
 define('DB_HOST', "mysql");
 
 Removing the existing data
-cd /home/stephane/dev/php/learnintouch/docker
-sudo rm -fr mysql/
+cd /home/stephane/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/
+sudo rm -fr data/
 
 Copying any existing website data into an external volume
 mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account
@@ -36,8 +35,8 @@ set unique_checks = 0;
 set foreign_key_checks = 0;
 commit;
 Copy the files
-cp /home/stephane/dev/php/learnintouch/docker/website/data/db_learnintouch-structure.sql .
-cp /home/stephane/dev/php/learnintouch/docker/website/data/db_learnintouch.sql .
+cp ~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/data/backup/db_learnintouch-structure.sql .
+cp ~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/data/backup/db_learnintouch.sql .
 Rebuild the docker image
 
 Doing a dump of the structure
