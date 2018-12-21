@@ -13,6 +13,12 @@ services:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/apache/logs"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/learnintouch/logs"
+    secrets:
+      - DB_ROOT_PASSWORD
+      - LEARNINTOUCH_DB_PASSWORD
+      - WWW_LEARNINTOUCH_DB_PASSWORD
+      - WWW_FOLKUNIVERSITET_DB_PASSWORD
+      - WWW_THALASOFT_DB_PASSWORD
     deploy:
       replicas: 1
       restart_policy:
@@ -79,3 +85,15 @@ services:
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/logrotate/logs"
 networks:
   learnintouch:
+secrets:
+  DB_ROOT_PASSWORD:
+    external: true
+  LEARNINTOUCH_DB_PASSWORD:
+    external: true
+  WWW_LEARNINTOUCH_DB_PASSWORD:
+    external: true
+  WWW_FOLKUNIVERSITET_DB_PASSWORD:
+    external: true
+  WWW_THALASOFT_DB_PASSWORD:
+    external: true
+

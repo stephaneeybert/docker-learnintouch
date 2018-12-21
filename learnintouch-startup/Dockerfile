@@ -3,7 +3,7 @@ FROM stephaneeybert/www.folkuniversitet
 RUN apt-get install -y iputils-ping telnet
 
 #ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
-ENTRYPOINT ["/bin/bash", "/usr/bin/apache/bin/apachectl", "start", "-D FOREGROUND"]
+ENTRYPOINT ["/bin/bash", "/usr/bin/learnintouch/start.sh"]
 
 # Build the container: docker build -t stephaneeybert/learnintouch-startup .
 # Rename the image: docker tag stephaneeybert/learnintouch-startup thalasoft.com:5000/learnintouch-startup

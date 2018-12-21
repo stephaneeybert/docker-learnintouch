@@ -44,6 +44,7 @@ COPY db_engine-structure.sql /usr/bin/learnintouch/
 COPY db_engine.sql /usr/bin/learnintouch/
 
 COPY engine-db-seed.sh /usr/bin/learnintouch/
+COPY start.sh /usr/bin/learnintouch/
 
 RUN chown -R apache:apache /usr/bin/learnintouch/ \
   && chmod -R 755 /usr/bin/learnintouch/
