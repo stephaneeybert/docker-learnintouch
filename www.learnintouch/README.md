@@ -57,6 +57,10 @@ Installing the website
 docker stack deploy --compose-file docker-compose-dev.yml wwwlearnintouch
 docker stack rm wwwlearnintouch
 
+Installing the website in production
+docker stack deploy --compose-file docker-compose.yml wwwlearnintouch
+docker stack rm wwwlearnintouch
+
 View the completion of the installation
 The docker-compose ps command should display an Exit 0 state for the www.learnintouch container
 $ docker-compose ps

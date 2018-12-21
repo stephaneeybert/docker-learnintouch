@@ -23,3 +23,7 @@ Installing the common database
 docker stack deploy --compose-file docker-compose-dev.yml learnintouch
 docker stack rm learnintouch
 
+Installing the common database in production
+docker stack deploy --compose-file docker-compose.yml learnintouch
+docker stack rm learnintouch
+
