@@ -5,3 +5,4 @@ volumes
 *.tar
 *.gz
 *.svn
+volumes/engine/setup/properties.php
