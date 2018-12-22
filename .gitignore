@@ -5,5 +5,3 @@ volumes
 *.tar
 *.gz
 *.svn
-volumes/engine/setup/properties.php
-www.folkuniversitet/specific.php
