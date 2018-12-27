@@ -15,6 +15,8 @@ services:
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/learnintouch/logs"
     secrets:
       - DB_ROOT_PASSWORD
+      - LEARNINTOUCH_DB_NAME
+      - LEARNINTOUCH_DB_USER
       - LEARNINTOUCH_DB_PASSWORD
       - WWW_LEARNINTOUCH_DB_PASSWORD
       - WWW_FOLKUNIVERSITET_DB_PASSWORD
@@ -87,6 +89,10 @@ networks:
   learnintouch:  
 secrets:
   DB_ROOT_PASSWORD:
+    external: true
+  LEARNINTOUCH_DB_NAME:
+    external: true
+  LEARNINTOUCH_DB_USER:
     external: true
   LEARNINTOUCH_DB_PASSWORD:
     external: true
