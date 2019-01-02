@@ -3,10 +3,10 @@
 // The website specific data
 
 // The name of the web site
-$gSetupWebsiteName = 'thalasoft';
+$gSetupWebsiteName = getenv("WWW_THALASOFT_NAME");
 
 // The domain name
-$gSetupWebsiteDomain = 'www.thalasoft.com';
+$gSetupWebsiteDomain = getenv("WWW_THALASOFT_DOMAIN");
 
 // The name of the web site url
 $gSetupWebsiteUrl = 'http://' . $gSetupWebsiteDomain . ':' . $_SERVER['SERVER_PORT'];

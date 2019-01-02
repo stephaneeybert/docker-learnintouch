@@ -18,10 +18,16 @@ services:
       DB_PORT: 3306
       WWW_LEARNINTOUCH_DB_NAME: db_learnintouch
       WWW_LEARNINTOUCH_DB_USER: learnintouch
+      WWW_LEARNINTOUCH_NAME: learnintouch
+      WWW_LEARNINTOUCH_DOMAIN: dev.learnintouch.com
       WWW_THALASOFT_DB_NAME: db_thalasoft
       WWW_THALASOFT_DB_USER: thalasoft
+      WWW_THALASOFT_NAME: thalasoft
+      WWW_THALASOFT_DOMAIN: www.thalasoft.com
       WWW_FOLKUNIVERSITET_DB_NAME: db_folkuniversitet
       WWW_FOLKUNIVERSITET_DB_USER: folkuniversitet
+      WWW_FOLKUNIVERSITET_NAME: folkuniversitet
+      WWW_FOLKUNIVERSITET_DOMAIN: folkuniversitet.thalasoft.com
       STAFF_EMAIL: mittiprovence@yahoo.se
       LOCAL_HOST: http://localhost
       NODEJS_SOCKET_PORT: 9001

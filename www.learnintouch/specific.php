@@ -3,10 +3,10 @@
 // The website specific data
 
 // The name of the web site
-$gSetupWebsiteName = 'learnintouch';
+$gSetupWebsiteName = getenv("WWW_LEARNINTOUCH_NAME");
 
 // The domain name
-$gSetupWebsiteDomain = 'dev.learnintouch.com';
+$gSetupWebsiteDomain = getenv("WWW_LEARNINTOUCH_DOMAIN");
 
 // The name of the web site url
 $gSetupWebsiteUrl = 'http://' . $gSetupWebsiteDomain . ':' . $_SERVER['SERVER_PORT'];
