@@ -13,6 +13,18 @@ services:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/apache/logs"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/learnintouch/logs"
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      WWW_LEARNINTOUCH_DB_NAME: db_learnintouch
+      WWW_LEARNINTOUCH_DB_USER: learnintouch
+      WWW_THALASOFT_DB_NAME: db_thalasoft
+      WWW_THALASOFT_DB_USER: thalasoft
+      WWW_FOLKUNIVERSITET_DB_NAME: db_folkuniversitet
+      WWW_FOLKUNIVERSITET_DB_USER: folkuniversitet
+      STAFF_EMAIL: mittiprovence@yahoo.se
+      LOCAL_HOST: http://localhost
+      NODEJS_SOCKET_PORT: 9001
     secrets:
       - DB_ROOT_PASSWORD
       - LEARNINTOUCH_DB_NAME

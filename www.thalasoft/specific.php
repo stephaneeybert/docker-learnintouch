@@ -15,10 +15,10 @@ $gSetupWebsiteUrl = 'http://' . $gSetupWebsiteDomain . ':' . $_SERVER['SERVER_PO
 $gRootPath = '/usr/bin/learnintouch/www/thalasoft.com/';
 
 // The database for one website
-define('DB_HOST', "mysql");
-define('DB_PORT', 3306);
-define('DB_NAME', "db_thalasoft");
-define('DB_USER', "thalasoft");
+define('DB_HOST', getenv("DB_HOST"));
+define('DB_PORT', getenv("DB_PORT"));
+define('DB_NAME', getenv("WWW_THALASOFT_DB_NAME"));
+define('DB_USER', getenv("WWW_THALASOFT_DB_USER"));
 define('DB_PASS', getenv("WWW_THALASOFT_DB_PASSWORD"));
 
 ?>

@@ -15,10 +15,10 @@ $gSetupWebsiteUrl = 'http://' . $gSetupWebsiteDomain . ':' . $_SERVER['SERVER_PO
 $gRootPath = '/usr/bin/learnintouch/www/folkuniversitet/';
 
 // The database for one website
-define('DB_HOST', "mysql");
-define('DB_PORT', 3306);
-define('DB_NAME', "db_folkuniversitet");
-define('DB_USER', "folkuniversitet");
+define('DB_HOST', getenv("DB_HOST"));
+define('DB_PORT', getenv("DB_PORT"));
+define('DB_NAME', getenv("WWW_FOLKUNIVERSITET_DB_NAME"));
+define('DB_USER', getenv("WWW_FOLKUNIVERSITET_DB_USER"))
 define('DB_PASS', getenv("WWW_FOLKUNIVERSITET_DB_PASSWORD"));
 
 ?>
