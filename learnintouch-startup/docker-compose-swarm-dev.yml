@@ -19,8 +19,8 @@ services:
       - LEARNINTOUCH_DB_USER
       - LEARNINTOUCH_DB_PASSWORD
       - WWW_LEARNINTOUCH_DB_PASSWORD
-      - WWW_FOLKUNIVERSITET_DB_PASSWORD
       - WWW_THALASOFT_DB_PASSWORD
+      - WWW_FOLKUNIVERSITET_DB_PASSWORD
     deploy:
       replicas: 1
       restart_policy:
