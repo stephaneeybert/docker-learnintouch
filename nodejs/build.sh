@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-docker build -t stephaneeybert/nodejs .
+docker build -t stephaneeybert/nodejs --rm=true .
 if [ $? -eq 0 ]; then
 docker tag stephaneeybert/nodejs localhost:5000/nodejs
 docker push localhost:5000/nodejs

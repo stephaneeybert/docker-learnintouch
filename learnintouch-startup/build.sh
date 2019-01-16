@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-docker build -t stephaneeybert/learnintouch-startup .
+docker build -t stephaneeybert/learnintouch-startup --rm=true .
 if [ $? -eq 0 ]; then
 docker tag stephaneeybert/learnintouch-startup localhost:5000/learnintouch-startup
 docker push localhost:5000/learnintouch-startup

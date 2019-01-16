@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-docker build -t stephaneeybert/redis .
+docker build -t stephaneeybert/redis --rm=true .
 if [ $? -eq 0 ]; then
 docker tag stephaneeybert/redis localhost:5000/redis
 docker push localhost:5000/redis
