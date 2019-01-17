@@ -1,9 +1,9 @@
-Start the application in swarm mode
+Starting the application in swarm mode
 ```
 docker stack deploy --compose-file docker-compose-swarm.yml letsencrypt
 ```
 
-Stop the swarm application
+Stopping the swarm application
 ```
 docker stack rm letsencrypt
 ```
