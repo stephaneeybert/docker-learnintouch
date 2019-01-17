@@ -82,7 +82,7 @@ docker stack rm wwwlearnintouch
 ```
 
 View the completion of the installation  
-The docker-compose ps command should display an Exit 0 state for the www.learnintouch container
+The `docker-compose ps` command should display an Exit 0 state for the www.learnintouch container
 ```
 $ docker-compose ps
       Name                    Command               State            Ports         
