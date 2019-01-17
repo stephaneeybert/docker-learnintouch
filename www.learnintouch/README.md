@@ -82,12 +82,7 @@ docker stack rm wwwlearnintouch
 ```
 
 View the completion of the installation  
-The `docker-compose ps` command should display an Exit 0 state for the www.learnintouch container
+The `docker stack ps wwwlearnintouch` command should display an Exit 0 state for the www.learnintouch container
 ```
-$ docker-compose ps
-      Name                    Command               State            Ports         
------------------------------------------------------------------------------------
-learnintouch.com   /bin/bash /usr/bin/learnin ...   Exit 0                         
-mysql              /bin/bash install/startup.sh     Up       0.0.0.0:3307->3306/tcp
+docker stack ps --format "{{.Name}}: {{.Image}} {{.Error}}" --no-trunc wwwlearnintouch
 ```
-
