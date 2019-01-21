@@ -10,14 +10,14 @@ View the `www.learnintouch/README.md` file
 
 Installing the website
 ```
-cd dev/docker/projects/learnintouch/www.thalasoft/
+cd www.thalasoft/
 docker stack deploy --compose-file docker-compose-dev.yml wwwthalasoft
 docker stack rm wwwthalasoft
 ```
 
 Installing the website in production
 ```
-cd dev/docker/projects/learnintouch/www.thalasoft/
+cd www.thalasoft/
 docker stack deploy --compose-file docker-compose.yml wwwthalasoft
 docker stack rm wwwthalasoft
 ```

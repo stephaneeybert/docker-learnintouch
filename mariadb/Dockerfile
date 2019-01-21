@@ -23,6 +23,7 @@ RUN cd /usr/bin/mariadb/ \
   && cmake \
   -DCMAKE_INSTALL_PREFIX=/usr/bin/mariadb/install \
   -DWITH_INNOBASE_STORAGE_ENGINE=1 \
+  -DWITHOUT_TOKUDB=1 \
   -DMYSQL_DATADIR=/usr/bin/mariadb/install/data \
   -DDOWNLOAD_BOOST=1 \
   -DWITH_BOOST=/usr/bin/mariadb/install/boost \
@@ -36,8 +37,10 @@ COPY startup.sh install/startup.sh
 COPY my.cnf install/my.cnf
 RUN ln -s /usr/bin/mariadb/install/my.cnf ~/.my.cnf
 
-COPY db-health-check.sh /usr/bin/learnintouch/
-RUN chmod 755 /usr/bin/learnintouch/db-health-check.sh
+COPY expand-secrets.sh /usr/bin/mariadb/
+
+COPY db-health-check.sh /usr/bin/mariadb/
+RUN chmod 755 /usr/bin/mariadb/db-health-check.sh
 
 #ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
 ENTRYPOINT ["/bin/bash", "install/startup.sh"]

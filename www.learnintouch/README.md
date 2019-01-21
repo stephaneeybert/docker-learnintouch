@@ -1,6 +1,30 @@
-Make sure to have the entry `learnintouch.com` in the virtual host or the entry `127.0.1.1 dev.learnintouch.com` in the `/etc/hosts` file
+Adding the hostname
+Have the entry `learnintouch.com` in the virtual host or the entry `127.0.1.1 dev.learnintouch.com` in the `/etc/hosts` file
 
-Open the website
+Installing the database for the website
+The docker-compose is used only to create and seed the `learnintouch.com` database. For this operation, it only needs the MySql dependency.
+
+Creating the database
+```
+cd www.learnintouch
+docker stack deploy --compose-file docker-compose-dev.yml wwwlearnintouch
+docker stack rm wwwlearnintouch
+```
+
+Creating the database in production
+```
+cd www.learnintouch
+docker stack deploy --compose-file docker-compose.yml wwwlearnintouch
+docker stack rm wwwlearnintouch
+```
+
+View the completion of the installation  
+The `docker stack ps wwwlearnintouch` command should display an Exit 0 state or a Complete value for the www.learnintouch container
+```
+docker stack ps wwwlearnintouch
+```
+
+Opening the website
 ```
 http://dev.learnintouch.com:81
 http://dev.learnintouch.com:81/admin.php
@@ -8,20 +32,12 @@ http://www.learnintouch.com
 http://www.learnintouch.com/admin.php
 ```
 
-Change some configuration in the `setup/properties.php` file
-The `specific.php` file must use the `mysql` host for the `DB_HOST` value
-The hostname is given by Docker and is the name of the container running MySQL
+Removing the existing file data specific to the website
 ```
-define('DB_HOST', "mysql");
+sudo rm -fr volumes/www.learnintouch/account/data/
 ```
 
-Removing the existing data
-```
-cd /home/stephane/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/
-sudo rm -fr data/
-```
-
-Copying any existing website data into an external volume
+Copying any existing website data into the website
 ```
 mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account
 cp data.zip ~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account
@@ -62,27 +78,4 @@ Doing a dump of the data
 docker exec -it learnintouch-startup bash
 /usr/bin/mariadb/install/bin/mysqldump --protocol=tcp -h mysql -P 3306 -u root -p --default-character-set=latin1 --skip-extended-insert --no-create-info db_learnintouch -v > /usr/bin/learnintouch/db-data.sql
 docker cp learnintouch-startup:/usr/bin/learnintouch/db-data.sql www.learnintouch/
-```
-
-Installing the database for the website
-The docker-compose is used only to create and seed the `learnintouch.com` database. For this operation, it only needs the MySql dependency.
-
-Installing the website
-```
-cd /home/stephane/dev/docker/projects/www.learnintouch
-docker stack deploy --compose-file docker-compose-dev.yml wwwlearnintouch
-docker stack rm wwwlearnintouch
-```
-
-Installing the website in production
-```
-cd /home/stephane/dev/docker/projects/www.learnintouch
-docker stack deploy --compose-file docker-compose.yml wwwlearnintouch
-docker stack rm wwwlearnintouch
-```
-
-View the completion of the installation  
-The `docker stack ps wwwlearnintouch` command should display an Exit 0 state for the www.learnintouch container
-```
-docker stack ps --format "{{.Name}}    {{.Error}}" --no-trunc wwwlearnintouch
 ```

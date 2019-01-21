@@ -24,9 +24,10 @@ COPY php.ini /usr/bin/php
 RUN mkdir -p /usr/bin/learnintouch/tmp \
   && chmod 755 /usr/bin/learnintouch/tmp
 
+WORKDIR /usr/bin/learnintouch
+
 # Use the non embedded development version for now instead
 #COPY engine.zip /usr/bin/learnintouch
-#WORKDIR /usr/bin/learnintouch
 #RUN unzip /usr/bin/learnintouch/engine.zip \
 #  && rm -f /usr/bin/learnintouch/engine.zip
 

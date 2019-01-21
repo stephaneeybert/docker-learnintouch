@@ -27,14 +27,16 @@ Creating the secrets
 ./docker-secrets.sh
 ```
 
-Installing the common database
+Creating the common database
 ```
+cd learnintouch
 docker stack deploy --compose-file docker-compose-dev.yml learnintouch
 docker stack rm learnintouch
 ```
 
-Installing the common database in production
+Creating the common database in production
 ```
+cd learnintouch
 docker stack deploy --compose-file docker-compose.yml learnintouch
 docker stack rm learnintouch
 ```

@@ -2,6 +2,9 @@ version: "3.1"
 services:
   folkuniversitet:
     image: localhost:5000/www.folkuniversitet
+    environment:
+      HOST_USER_ID: ${CURRENT_UID}
+      HOST_GROUP_ID: ${CURRENT_GID}      
     secrets:
       - DB_ROOT_PASSWORD       
       - WWW_FOLKUNIVERSITET_DB_PASSWORD       
@@ -14,6 +17,11 @@ services:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"
+    environment:
+      HOST_USER_ID: ${CURRENT_UID}
+      HOST_GROUP_ID: ${CURRENT_GID}
+    secrets:
+      - DB_ROOT_PASSWORD
 secrets:
   DB_ROOT_PASSWORD:
     external: true

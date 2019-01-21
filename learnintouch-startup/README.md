@@ -12,12 +12,12 @@ http://www.thalasoft.com/admin.php
 
 Starting the application in swarm mode
 ```
-docker stack deploy --compose-file docker-compose-swarm-dev.yml learnintouch
+docker stack deploy --compose-file docker-compose-dev.yml learnintouch
 ```
 
 Starting the application in swarm mode in production
 ```
-docker stack deploy --compose-file docker-compose-swarm.yml learnintouch
+docker stack deploy --compose-file docker-compose.yml learnintouch
 ```
 
 Stopping the swarm application
