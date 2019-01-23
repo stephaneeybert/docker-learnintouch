@@ -10,6 +10,8 @@ services:
       - LEARNINTOUCH_DB_NAME
       - LEARNINTOUCH_DB_USER
       - LEARNINTOUCH_DB_PASSWORD        
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
     deploy:
       replicas: 1
       restart_policy:

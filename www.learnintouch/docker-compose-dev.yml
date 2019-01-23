@@ -8,6 +8,8 @@ services:
     secrets:
       - DB_ROOT_PASSWORD      
       - WWW_LEARNINTOUCH_DB_PASSWORD        
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
     deploy:
       replicas: 1
       restart_policy:
