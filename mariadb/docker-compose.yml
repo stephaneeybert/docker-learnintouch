@@ -1,7 +1,7 @@
 version: "3.1"
 services:
   mysql:
-    image: thalasoft.com:5000/mariadb:10.1.24
+    image: thalasoft.com:5000/mariadb:10.3.7
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
       - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"
