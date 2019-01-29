@@ -1,29 +1,28 @@
-version: "3.1"
+version: "3.5"
 services:
   thalasoft:
     image: thalasoft.com:5000/www.thalasoft
+    networks:
+      - learnintouch
+      - common
+    volumes:
+      - "~/dev/docker/projects/common/volumes/database/data:/usr/bin/mariadb/install/data"
     environment:
       HOST_USER_ID: ${CURRENT_UID}
       HOST_GROUP_ID: ${CURRENT_GID}      
     secrets:
       - DB_ROOT_PASSWORD      
       - WWW_THALASOFT_DB_PASSWORD
-    volumes:
-      - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
     deploy:
       replicas: 1
       restart_policy:
         condition: none
-  mysql:
-    image: thalasoft.com:5000/mariadb:10.1.24
-    volumes:
-      - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
-      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"        
-    environment:
-      HOST_USER_ID: ${CURRENT_UID}
-      HOST_GROUP_ID: ${CURRENT_GID}
-    secrets:
-      - DB_ROOT_PASSWORD
+networks:
+  learnintouch:
+    name: learnintouch
+  common:
+    external: true
+    name: common
 secrets:
   DB_ROOT_PASSWORD:
     external: true  

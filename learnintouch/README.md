@@ -5,6 +5,11 @@ Change the `NODEJS_SOCKET_LOCALHOST` in the `setup/properties.php` file to have 
 define('NODEJS_SOCKET_LOCALHOST', 'http://dev.learnintouch.com');
 ```
 
+The redis hostname is specified in the follwowing files:
+```
+learnintouch/php.ini
+engine/api/js/socket/config.js
+
 Change the session.save_path in the php.ini file to have it as the name of the redis container: `redis`
 ```
 session.save_path = "tcp://redis:6379"

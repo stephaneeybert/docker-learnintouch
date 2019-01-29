@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.5"
 services:
   learnintouch-startup:
     image: localhost:5000/learnintouch-startup
@@ -6,13 +6,14 @@ services:
       - "81:80"
     networks:
       - learnintouch      
+      - common
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/data:/usr/bin/learnintouch/www/learnintouch.com/account/data"
       - "~/dev/docker/projects/learnintouch/volumes/www.thalasoft/account/data:/usr/bin/learnintouch/www/thalasoft.com/account/data"
       - "~/dev/docker/projects/learnintouch/volumes/www.folkuniversitet/account/data:/usr/bin/learnintouch/www/folkuniversitet/account/data"
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
-      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/apache/logs"
-      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/learnintouch/logs"
+      - "~/dev/docker/projects/common/volumes/logs:/usr/bin/apache/logs"
+      - "~/dev/docker/projects/common/volumes/logs:/usr/bin/learnintouch/logs"
     environment:
       DB_HOST: mysql
       DB_PORT: 3306
@@ -57,9 +58,10 @@ services:
       - "9001:9001"
     networks:
       - learnintouch      
+      - common
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
-      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/learnintouch/logs"
+      - "~/dev/docker/projects/common/volumes/logs:/usr/bin/learnintouch/logs"
     deploy:
       replicas: 1
       restart_policy:
@@ -72,44 +74,12 @@ services:
       interval: 5s
       timeout: 10s
       retries: 3  
-  mysql:
-    image: localhost:5000/mariadb:10.1.24
-    networks:
-      - learnintouch      
-    volumes:
-      - "~/dev/docker/projects/learnintouch/volumes/database/data:/usr/bin/mariadb/install/data"
-      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/mariadb/install/logs"
-    environment:
-      HOST_USER_ID: ${CURRENT_UID}
-      HOST_GROUP_ID: ${CURRENT_GID}      
-    secrets:
-      - DB_ROOT_PASSWORD
-    deploy:
-      replicas: 1
-      restart_policy:
-        condition: any
-        delay: 5s
-        max_attempts: 3 
-        window: 10s
-    healthcheck:
-      test: /usr/bin/mariadb/db-health-check.sh
-      interval: 5s
-      timeout: 10s
-      retries: 3  
-  redis:
-    image: localhost:5000/redis:3.0.7
-    networks:
-      - learnintouch      
-    volumes:
-      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/redis/install/var/logs"
-  logrotate:
-    image: localhost:5000/logrotate
-    networks:
-      - learnintouch      
-    volumes:
-      - "~/dev/docker/projects/learnintouch/volumes/logs:/usr/bin/logrotate/logs"
 networks:
   learnintouch:  
+    name: learnintouch
+  common:
+    external: true
+    name: common
 secrets:
   DB_ROOT_PASSWORD:
     external: true

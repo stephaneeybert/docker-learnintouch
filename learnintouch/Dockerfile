@@ -62,3 +62,4 @@ ENTRYPOINT ["/bin/bash", "/usr/bin/learnintouch/engine-db-seed.sh"]
 # Open a shell in the container: docker exec -it learnintouch bash
 # Create a docker volume for the data: docker volume create --name learnintouch-engine
 # View the php log: tail -400f /usr/bin/learnintouch/logs/php_error_log
+# View the apache learnintouch access log: tail -400f /usr/bin/apache/logs/learnintouch-access_log
