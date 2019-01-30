@@ -12,6 +12,7 @@ services:
       - "~/dev/docker/projects/learnintouch/volumes/www.thalasoft/account/data:/usr/bin/learnintouch/www/thalasoft.com/account/data"
       - "~/dev/docker/projects/learnintouch/volumes/www.folkuniversitet/account/data:/usr/bin/learnintouch/www/folkuniversitet/account/data"
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
+      - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/bin/learnintouch/letsencrypt"
       - "~/dev/docker/projects/common/volumes/logs:/usr/bin/apache/logs"
       - "~/dev/docker/projects/common/volumes/logs:/usr/bin/learnintouch/logs"
     environment:
@@ -61,6 +62,7 @@ services:
       - common
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
+      - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/bin/learnintouch/letsencrypt"
       - "~/dev/docker/projects/common/volumes/logs:/usr/bin/learnintouch/logs"
     deploy:
       replicas: 1

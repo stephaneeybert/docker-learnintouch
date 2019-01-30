@@ -63,6 +63,7 @@ services:
       - common
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/bin/learnintouch/engine"
+      - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/bin/learnintouch/letsencrypt"
       - "~/dev/docker/projects/common/volumes/logs:/usr/bin/learnintouch/logs"
     deploy:
       replicas: 1
