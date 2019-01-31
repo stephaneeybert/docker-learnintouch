@@ -22,7 +22,7 @@ Packaging the learnintouch source code:
 ```
 cd /home/stephane/dev/php/projects/learnintouch
 zip engine.zip engine -r -x "*.git/*";
-scp engine.zip stephane@165.227.161.233:/home/stephane/dev/docker/projects/learnintouch/volumes/
+scp engine.zip stephane@...:/home/stephane/dev/docker/projects/learnintouch/volumes/
 rm engine.zip
 ```
 Rebuild the image if repackaging
