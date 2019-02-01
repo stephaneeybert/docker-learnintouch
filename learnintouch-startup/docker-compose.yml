@@ -3,8 +3,8 @@ services:
   learnintouch-startup:
     image: thalasoft.com:5000/learnintouch-startup
     ports:
-      - "80:80"
-      - "443:443"
+      - "81:80"
+      - "83:443"
     networks:
       - learnintouch
       - common
