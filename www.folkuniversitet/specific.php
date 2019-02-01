@@ -9,7 +9,7 @@ $gSetupWebsiteName = getenv("WWW_FOLKUNIVERSITET_NAME");
 $gSetupWebsiteDomain = getenv("WWW_FOLKUNIVERSITET_DOMAIN");
 
 // The name of the web site url
-$gSetupWebsiteUrl = 'http://' . $gSetupWebsiteDomain . ':' . $_SERVER['SERVER_PORT'];
+$gSetupWebsiteUrl = 'https://' . $gSetupWebsiteDomain . ':' . $_SERVER['SERVER_PORT'];
 
 // The root path
 $gRootPath = '/usr/bin/learnintouch/www/folkuniversitet/';
