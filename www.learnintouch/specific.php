@@ -12,7 +12,7 @@ $gSetupWebsiteDomain = getenv("WWW_LEARNINTOUCH_DOMAIN");
 $gSetupWebsiteUrl = 'http://' . $gSetupWebsiteDomain . ':' . $_SERVER['SERVER_PORT'];
 
 // The root path
-$gRootPath = '/usr/bin/learnintouch/www/learnintouch.com/';
+$gRootPath = '/usr/local/learnintouch/www/learnintouch.com/';
 
 // The database for one website
 define('DB_HOST', getenv("DB_HOST"));

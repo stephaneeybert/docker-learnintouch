@@ -1,2 +1,2 @@
-php_value include_path "/usr/bin/learnintouch/engine/setup"
-php_value auto_prepend_file "/usr/bin/learnintouch/www/learnintouch.com/account/setup/specific.php"
+php_value include_path "/usr/local/learnintouch/engine/setup"
+php_value auto_prepend_file "/usr/local/learnintouch/www/learnintouch.com/account/setup/specific.php"

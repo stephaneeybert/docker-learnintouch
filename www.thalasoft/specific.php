@@ -12,7 +12,7 @@ $gSetupWebsiteDomain = getenv("WWW_THALASOFT_DOMAIN");
 $gSetupWebsiteUrl = 'https://' . $gSetupWebsiteDomain . ':' . $_SERVER['SERVER_PORT'];
 
 // The root path
-$gRootPath = '/usr/bin/learnintouch/www/thalasoft.com/';
+$gRootPath = '/usr/local/learnintouch/www/thalasoft.com/';
 
 // The database for one website
 define('DB_HOST', getenv("DB_HOST"));

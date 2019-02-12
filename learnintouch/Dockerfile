@@ -1,9 +1,8 @@
-FROM stephaneeybert/php:5.6.32
+FROM stephaneeybert/php:7.3.2
 
+
+# Install some locales
 RUN apt-get update \
-  && apt-get install -y unzip \
-  && apt-get install -y curl \
-  && apt-get install -y --no-install-recommends apt-utils \
   && apt-get install -y locales \
   && locale-gen en_GB \
   && locale-gen fr_FR \
@@ -15,45 +14,46 @@ RUN apt-get update \
   && localedef -i nn_NO -f UTF-8 nn_NO.UTF-8
 
 # The backup module uses the wget command to do an asynchronous database backup
-RUN apt-get install -y wget
+RUN apt-get update \
+  && apt-get install -y wget
 
-COPY httpd.conf /usr/bin/apache/conf
-COPY httpd-ssl.conf /usr/bin/apache/conf/extra
-COPY php.ini /usr/bin/php
+COPY httpd.conf /usr/local/apache/conf
+COPY httpd-ssl.conf /usr/local/apache/conf/extra
+COPY php.ini /usr/local/php
 
-RUN mkdir -p /usr/bin/learnintouch/tmp \
-  && chmod 755 /usr/bin/learnintouch/tmp
+RUN mkdir -p /usr/local/learnintouch/tmp \
+  && chmod 755 /usr/local/learnintouch/tmp
 
-WORKDIR /usr/bin/learnintouch
+WORKDIR /usr/local/learnintouch
 
 # Use the non embedded development version for now instead
-#COPY engine.zip /usr/bin/learnintouch
-#RUN unzip /usr/bin/learnintouch/engine.zip \
-#  && rm -f /usr/bin/learnintouch/engine.zip
+#COPY engine.zip /usr/local/learnintouch
+#RUN unzip /usr/local/learnintouch/engine.zip \
+#  && rm -f /usr/local/learnintouch/engine.zip
 
-RUN mkdir /usr/bin/learnintouch/logs \
-  && chmod 755 /usr/bin/learnintouch/logs \
-  && touch /usr/bin/learnintouch/logs/php_error_log \
-  && chmod 755 /usr/bin/learnintouch/logs/php_error_log
+RUN mkdir /usr/local/learnintouch/logs \
+  && chmod 755 /usr/local/learnintouch/logs \
+  && touch /usr/local/learnintouch/logs/php_error_log \
+  && chmod 755 /usr/local/learnintouch/logs/php_error_log
 
-RUN groupadd -f apache && useradd -d /usr/bin/learnintouch/ -g apache apache
+RUN groupadd -f apache && useradd -d /usr/local/learnintouch/ -g apache apache
 
-COPY expand-secrets.sh /usr/bin/learnintouch/
+COPY expand-secrets.sh /usr/local/learnintouch/
 
-COPY db_engine-db.sql /usr/bin/learnintouch/
-COPY db_engine-structure.sql /usr/bin/learnintouch/
-COPY db_engine.sql /usr/bin/learnintouch/
+COPY db_engine-db.sql /usr/local/learnintouch/
+COPY db_engine-structure.sql /usr/local/learnintouch/
+COPY db_engine.sql /usr/local/learnintouch/
 
-COPY engine-db-seed.sh /usr/bin/learnintouch/
-COPY start.sh /usr/bin/learnintouch/
+COPY engine-db-seed.sh /usr/local/learnintouch/
+COPY start.sh /usr/local/learnintouch/
 
-RUN chown -R apache:apache /usr/bin/learnintouch/ \
-  && chmod -R 755 /usr/bin/learnintouch/
+RUN chown -R apache:apache /usr/local/learnintouch/ \
+  && chmod -R 755 /usr/local/learnintouch/
 
-COPY httpd-vhosts.conf /usr/bin/apache/conf/extra
+COPY httpd-vhosts.conf /usr/local/apache/conf/extra
 
 #ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
-ENTRYPOINT ["/bin/bash", "/usr/bin/learnintouch/engine-db-seed.sh"]
+ENTRYPOINT ["/bin/bash", "/usr/local/learnintouch/engine-db-seed.sh"]
 
 # Build the container: docker build -t stephaneeybert/learnintouch .
 # Rename the image: docker tag stephaneeybert/learnintouch thalasoft.com:5000/learnintouch
@@ -61,5 +61,5 @@ ENTRYPOINT ["/bin/bash", "/usr/bin/learnintouch/engine-db-seed.sh"]
 # Run the container: docker run --link mariadb:mariadb --name learnintouch stephaneeybert/learnintouch
 # Open a shell in the container: docker exec -it learnintouch bash
 # Create a docker volume for the data: docker volume create --name learnintouch-engine
-# View the php log: tail -400f /usr/bin/learnintouch/logs/php_error_log
-# View the apache learnintouch access log: tail -400f /usr/bin/apache/logs/learnintouch-access_log
+# View the php log: tail -400f /usr/local/learnintouch/logs/php_error_log
+# View the apache learnintouch access log: tail -400f /usr/local/apache/logs/learnintouch-access_log
