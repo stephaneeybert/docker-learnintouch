@@ -33,6 +33,7 @@ Build all the images respecting their dependencies order
 On the remote host do a pull command  
 ```  
 docker pull thalasoft.com:5000/learnintouch-startup
+docker pull thalasoft.com:5000/nodejs-learnintouch
 ```  
 
 Creating the databases  
