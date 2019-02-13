@@ -4,6 +4,7 @@ services:
     image: localhost:5000/learnintouch-startup
     ports:
       - "81:80"
+      - "83:443"
     networks:
       learnintouch:
       common:
@@ -21,18 +22,20 @@ services:
       WWW_LEARNINTOUCH_DB_NAME: db_learnintouch
       WWW_LEARNINTOUCH_DB_USER: learnintouch
       WWW_LEARNINTOUCH_NAME: learnintouch
-      WWW_LEARNINTOUCH_DOMAIN: dev.learnintouch.com
+      WWW_LEARNINTOUCH_DOMAIN: dev.thalasoft.com
+      WWW_LEARNINTOUCH_SCHEME: https
       WWW_THALASOFT_DB_NAME: db_thalasoft
       WWW_THALASOFT_DB_USER: thalasoft
       WWW_THALASOFT_NAME: thalasoft
       WWW_THALASOFT_DOMAIN: www.thalasoft.com
+      WWW_THALASOFT_SCHEME: https
       WWW_FOLKUNIVERSITET_DB_NAME: db_folkuniversitet
       WWW_FOLKUNIVERSITET_DB_USER: folkuniversitet
       WWW_FOLKUNIVERSITET_NAME: folkuniversitet
       WWW_FOLKUNIVERSITET_DOMAIN: folkuniversitet.thalasoft.com
+      WWW_FOLKUNIVERSITET_SCHEME: https
       STAFF_EMAIL: mittiprovence@yahoo.se
-      LOCAL_HOST: http://localhost
-      NODEJS_SOCKET_PORT: 9001
+      NODEJS_SOCKET_PORT: 9002
     secrets:
       - DB_ROOT_PASSWORD
       - LEARNINTOUCH_DB_NAME
@@ -57,6 +60,7 @@ services:
     image: localhost:5000/nodejs-learnintouch
     ports:
       - "9001:9001"
+      - "9002:9002"
     networks:
       learnintouch:
       common:

@@ -1,6 +1,6 @@
 Adding the hostname
-Have the entry `127.0.1.1 dev.learnintouch.com` in the `/etc/hosts` file
-Have the entry `dev.learnintouch.com` in the virtual host
+Have the entry `127.0.1.1 dev.thalasoft.com` in the `/etc/hosts` file
+Have the entry `dev.thalasoft.com` in the virtual host
 
 Installing the database for the website
 The docker-compose is used only to create and seed the `learnintouch.com` database. For this operation, it only needs the MySql dependency.
@@ -27,10 +27,16 @@ docker stack ps wwwlearnintouch
 
 Opening the website
 ```
-http://dev.learnintouch.com:81
-http://dev.learnintouch.com:81/admin.php
-http://www.learnintouch.com
-http://www.learnintouch.com/admin.php
+http://dev.thalasoft.com:81
+http://dev.thalasoft.com:81/admin.php
+https://dev.thalasoft.com:83
+https://dev.thalasoft.com:83/admin.php
+```
+
+Opening the website in production
+```
+https://www.thalasoft.com:83
+https://www.thalasoft.com:83/admin.php
 ```
 
 Removing the existing file data specific to the website

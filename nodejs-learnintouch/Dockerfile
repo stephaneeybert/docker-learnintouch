@@ -4,7 +4,7 @@ RUN mkdir -p /usr/local/learnintouch/
 
 WORKDIR /usr/local/learnintouch/
 
-RUN npm install formidable http https path connect cookie socket.io redis socket.io-redis lodash
+RUN npm install formidable http https path fs connect cookie socket.io redis socket.io-redis lodash
 
 COPY start.sh /usr/local/learnintouch/
 RUN chmod 755 /usr/local/learnintouch/*

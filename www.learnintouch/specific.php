@@ -7,9 +7,10 @@ $gSetupWebsiteName = getenv("WWW_LEARNINTOUCH_NAME");
 
 // The domain name
 $gSetupWebsiteDomain = getenv("WWW_LEARNINTOUCH_DOMAIN");
+$gSetupWebsiteScheme = getenv("WWW_LEARNINTOUCH_SCHEME");
 
 // The name of the web site url
-$gSetupWebsiteUrl = 'http://' . $gSetupWebsiteDomain . ':' . $_SERVER['SERVER_PORT'];
+$gSetupWebsiteUrl = $gSetupWebsiteScheme . '://' . $gSetupWebsiteDomain . ':' . $_SERVER['SERVER_PORT'];
 
 // The root path
 $gRootPath = '/usr/local/learnintouch/www/learnintouch.com/';
