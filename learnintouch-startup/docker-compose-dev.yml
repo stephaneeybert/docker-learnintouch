@@ -5,8 +5,8 @@ services:
     ports:
       - "81:80"
     networks:
-      - learnintouch      
-      - common
+      learnintouch:
+      common:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/data:/usr/local/learnintouch/www/learnintouch.com/account/data"
       - "~/dev/docker/projects/learnintouch/volumes/www.thalasoft/account/data:/usr/local/learnintouch/www/thalasoft.com/account/data"
@@ -58,8 +58,8 @@ services:
     ports:
       - "9001:9001"
     networks:
-      - learnintouch      
-      - common
+      learnintouch:
+      common:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
       - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"

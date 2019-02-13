@@ -3,8 +3,8 @@ services:
   thalasoft:
     image: thalasoft.com:5000/www.thalasoft
     networks:
-      - learnintouch
-      - common
+      learnintouch:
+      common:
     volumes:
       - "~/dev/docker/projects/common/volumes/database/data:/usr/local/mariadb/install/data"
     environment:

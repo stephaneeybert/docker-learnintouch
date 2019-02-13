@@ -3,8 +3,8 @@ services:
   folkuniversitet:
     image: localhost:5000/www.folkuniversitet
     networks:
-      - learnintouch
-      - common
+      learnintouch:
+      common:
     volumes:
       - "~/dev/docker/projects/common/volumes/database/data:/usr/local/mariadb/install/data"
     environment:
