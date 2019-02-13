@@ -20,7 +20,7 @@ The docker-compose ps command should display an Exit 0 state for the learnintouc
 
 Packaging the learnintouch source code:
 ```
-cd /home/stephane/dev/php/projects/learnintouch
+cd /home/stephane/dev/php/projects/learnintouch;
 zip engine.zip engine -r -x "*.git/*";
 scp engine.zip stephane@...:/home/stephane/dev/docker/projects/learnintouch/volumes/
 rm engine.zip
