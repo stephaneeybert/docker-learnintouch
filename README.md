@@ -1,31 +1,3 @@
-Starting the application in swarm mode
-```
-cd learnintouch-startup
-docker stack deploy --compose-file docker-compose-dev.yml learnintouch
-```
-
-Starting the application in swarm mode in production
-```
-cd learnintouch-startup
-docker stack deploy --compose-file docker-compose.yml learnintouch
-```
-
-Stopping the swarm application
-```
-docker stack rm learnintouch
-```
-
-Another way to start the dev application locally
-```
-cd learnintouch-startup
-docker-compose -f docker-compose-dev.yml up -d
-```  
-
-and to stop it
-```  
-docker-compose down
-```  
-
 Deploying the application  
 
 Build and install the images  
@@ -41,3 +13,28 @@ Create the database and the root user in `mariadb`
 Create the common database in `learnintouch`  
 Create the websites databases in `www.`  
 
+Opening the application
+```
+http://dev.learnintouch.com:81
+http://dev.learnintouch.com:81/admin.php
+```
+
+Opening the application in production
+```
+http://www.thalasoft.com
+http://www.thalasoft.com/admin.php
+```
+
+Starting the application in swarm mode
+```
+docker stack deploy --compose-file docker-compose-dev.yml learnintouch
+```
+
+Starting the application in swarm mode in production
+```
+docker stack deploy --compose-file docker-compose.yml learnintouch
+```
+
+Stopping the swarm application
+```
+docker stack rm learnintouch
