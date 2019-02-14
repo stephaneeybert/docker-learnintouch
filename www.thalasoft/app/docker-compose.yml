@@ -1,0 +1,86 @@
+version: "3.5"
+services:
+  www:
+    image: thalasoft.com:5000/www.thalasoft
+    ports:
+      - "81:80"
+      - "83:443"
+    networks:
+      learnintouch:
+      common:
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/www.thalasoft/account/data:/usr/local/learnintouch/www/thalasoft.com/account/data"
+      - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
+      - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
+      - "~/dev/docker/projects/common/volumes/logs:/usr/local/apache/logs"
+      - "~/dev/docker/projects/common/volumes/logs:/usr/local/learnintouch/logs"
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      WWW_THALASOFT_DB_NAME: db_thalasoft
+      WWW_THALASOFT_DB_USER: thalasoft
+      WWW_THALASOFT_NAME: thalasoft
+      WWW_THALASOFT_DOMAIN: www.thalasoft.com
+      WWW_THALASOFT_SCHEME: https
+      STAFF_EMAIL: mittiprovence@yahoo.se
+      NODEJS_SOCKET_PORT: 9002
+    secrets:
+      - DB_ROOT_PASSWORD
+      - LEARNINTOUCH_DB_NAME
+      - LEARNINTOUCH_DB_USER
+      - LEARNINTOUCH_DB_PASSWORD
+      - WWW_THALASOFT_DB_PASSWORD
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 10s
+    healthcheck:
+      test: curl --fail http://127.0.0.1:80/engine/ping.php || exit 1
+      interval: 5s
+      timeout: 10s
+      retries: 3
+  nodejs:
+    image: thalasoft.com:5000/nodejs-learnintouch
+    ports:
+      - "9001:9001"
+      - "9002:9002"
+    networks:
+      learnintouch:
+      common:
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
+      - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
+      - "~/dev/docker/projects/common/volumes/logs:/usr/local/learnintouch/logs"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 10s
+    healthcheck:
+      test: curl --fail http://127.0.0.1:9001/ping || exit 1
+      interval: 5s
+      timeout: 10s
+      retries: 3
+networks:
+  learnintouch:
+    name: learnintouch
+  common:
+    external: true
+    name: common
+secrets:
+  DB_ROOT_PASSWORD:
+    external: true
+  LEARNINTOUCH_DB_NAME:
+    external: true
+  LEARNINTOUCH_DB_USER:
+    external: true
+  LEARNINTOUCH_DB_PASSWORD:
+    external: true
+  WWW_THALASOFT_DB_PASSWORD:
+    external: true
+

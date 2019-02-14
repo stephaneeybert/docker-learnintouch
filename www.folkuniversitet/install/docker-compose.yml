@@ -1,7 +1,7 @@
 version: "3.5"
 services:
-  learnintouch:
-    image: thalasoft.com:5000/www.learnintouch
+  folkuniversitet:
+    image: thalasoft.com:5000/www.folkuniversitet-install
     networks:
       learnintouch:
       common:
@@ -12,7 +12,7 @@ services:
       HOST_GROUP_ID: ${CURRENT_GID}      
     secrets:
       - DB_ROOT_PASSWORD
-      - WWW_LEARNINTOUCH_DB_PASSWORD        
+      - WWW_FOLKUNIVERSITET_DB_PASSWORD        
     deploy:
       replicas: 1
       restart_policy:
@@ -26,6 +26,5 @@ networks:
 secrets:
   DB_ROOT_PASSWORD:
     external: true
-  WWW_LEARNINTOUCH_DB_PASSWORD:
+  WWW_FOLKUNIVERSITET_DB_PASSWORD:
     external: true
-

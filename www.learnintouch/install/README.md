@@ -8,35 +8,21 @@ The docker-compose is used only to create and seed the `learnintouch.com` databa
 Creating the database
 ```
 cd www.learnintouch
-docker stack deploy --compose-file docker-compose-dev.yml wwwlearnintouch
-docker stack rm wwwlearnintouch
+docker stack deploy --compose-file docker-compose-dev.yml www_learnintouch
+docker stack rm www_learnintouch
 ```
 
 Creating the database in production
 ```
 cd www.learnintouch
-docker stack deploy --compose-file docker-compose.yml wwwlearnintouch
-docker stack rm wwwlearnintouch
+docker stack deploy --compose-file docker-compose.yml www_learnintouch
+docker stack rm www_learnintouch
 ```
 
 View the completion of the installation  
-The `docker stack ps wwwlearnintouch` command should display an Exit 0 state or a Complete value for the www.learnintouch container
+The `docker stack ps www_learnintouch` command should display an Exit 0 state or a Complete value for the www.learnintouch container
 ```
-docker stack ps wwwlearnintouch
-```
-
-Opening the website
-```
-http://dev.thalasoft.com:81
-http://dev.thalasoft.com:81/admin.php
-https://dev.thalasoft.com:83
-https://dev.thalasoft.com:83/admin.php
-```
-
-Opening the website in production
-```
-https://www.thalasoft.com:83
-https://www.thalasoft.com:83/admin.php
+docker stack ps www_learnintouch
 ```
 
 Removing the existing file data specific to the website

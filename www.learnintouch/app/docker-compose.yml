@@ -1,7 +1,7 @@
 version: "3.5"
 services:
-  learnintouch-startup:
-    image: localhost:5000/learnintouch-startup
+  www:
+    image: localhost:5000/www.learnintouch
     ports:
       - "81:80"
       - "83:443"
@@ -10,8 +10,6 @@ services:
       common:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/data:/usr/local/learnintouch/www/learnintouch.com/account/data"
-      - "~/dev/docker/projects/learnintouch/volumes/www.thalasoft/account/data:/usr/local/learnintouch/www/thalasoft.com/account/data"
-      - "~/dev/docker/projects/learnintouch/volumes/www.folkuniversitet/account/data:/usr/local/learnintouch/www/folkuniversitet/account/data"
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
       - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
       - "~/dev/docker/projects/common/volumes/logs:/usr/local/apache/logs"
@@ -24,16 +22,6 @@ services:
       WWW_LEARNINTOUCH_NAME: learnintouch
       WWW_LEARNINTOUCH_DOMAIN: dev.thalasoft.com
       WWW_LEARNINTOUCH_SCHEME: https
-      WWW_THALASOFT_DB_NAME: db_thalasoft
-      WWW_THALASOFT_DB_USER: thalasoft
-      WWW_THALASOFT_NAME: thalasoft
-      WWW_THALASOFT_DOMAIN: www.thalasoft.com
-      WWW_THALASOFT_SCHEME: https
-      WWW_FOLKUNIVERSITET_DB_NAME: db_folkuniversitet
-      WWW_FOLKUNIVERSITET_DB_USER: folkuniversitet
-      WWW_FOLKUNIVERSITET_NAME: folkuniversitet
-      WWW_FOLKUNIVERSITET_DOMAIN: folkuniversitet.thalasoft.com
-      WWW_FOLKUNIVERSITET_SCHEME: https
       STAFF_EMAIL: mittiprovence@yahoo.se
       NODEJS_SOCKET_PORT: 9002
     secrets:
@@ -42,8 +30,6 @@ services:
       - LEARNINTOUCH_DB_USER
       - LEARNINTOUCH_DB_PASSWORD
       - WWW_LEARNINTOUCH_DB_PASSWORD
-      - WWW_THALASOFT_DB_PASSWORD
-      - WWW_FOLKUNIVERSITET_DB_PASSWORD
     deploy:
       replicas: 1
       restart_policy:
@@ -56,7 +42,7 @@ services:
       interval: 5s
       timeout: 10s
       retries: 3  
-  nodejs-learnintouch:
+  nodejs:
     image: localhost:5000/nodejs-learnintouch
     ports:
       - "9001:9001"
@@ -97,8 +83,3 @@ secrets:
     external: true
   WWW_LEARNINTOUCH_DB_PASSWORD:
     external: true
-  WWW_FOLKUNIVERSITET_DB_PASSWORD:
-    external: true
-  WWW_THALASOFT_DB_PASSWORD:
-    external: true
-

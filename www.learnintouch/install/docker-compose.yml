@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   learnintouch:
-    image: localhost:5000/www.learnintouch
+    image: thalasoft.com:5000/www.learnintouch-install
     networks:
       learnintouch:
       common:
@@ -11,7 +11,7 @@ services:
       HOST_USER_ID: ${CURRENT_UID}
       HOST_GROUP_ID: ${CURRENT_GID}      
     secrets:
-      - DB_ROOT_PASSWORD      
+      - DB_ROOT_PASSWORD
       - WWW_LEARNINTOUCH_DB_PASSWORD        
     deploy:
       replicas: 1
@@ -25,6 +25,7 @@ networks:
     name: common
 secrets:
   DB_ROOT_PASSWORD:
-    external: true  
+    external: true
   WWW_LEARNINTOUCH_DB_PASSWORD:
-    external: true    
+    external: true
+
