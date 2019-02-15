@@ -1,3 +1,4 @@
+#FROM stephaneeybert/php:5.6.32
 FROM stephaneeybert/php:7.3.2
 
 
