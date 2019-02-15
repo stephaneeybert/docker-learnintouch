@@ -3,10 +3,10 @@ services:
   www:
     image: thalasoft.com:5000/www.folkuniversitet
     ports:
-      - "81:80"
-      - "83:443"
+      - "85:80"
+      - "86:443"
     networks:
-      learnintouch:
+      folkuniversitet:
       common:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/www.folkuniversitet/account/data:/usr/local/learnintouch/www/folkuniversitet/account/data"
@@ -45,10 +45,10 @@ services:
   nodejs:
     image: thalasoft.com:5000/nodejs-learnintouch
     ports:
-      - "9001:9001"
-      - "9002:9002"
+      - "9003:9001"
+      - "9004:9002"
     networks:
-      learnintouch:
+      folkuniversitet:
       common:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
@@ -67,8 +67,8 @@ services:
       timeout: 10s
       retries: 3
 networks:
-  learnintouch:
-    name: learnintouch
+  folkuniversitet:
+    name: folkuniversitet
   common:
     external: true
     name: common
