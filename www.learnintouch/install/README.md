@@ -5,6 +5,12 @@ Have the entry `dev.thalasoft.com` in the virtual host
 Installing the database for the website
 The docker-compose is used only to create and seed the `learnintouch.com` database. For this operation, it only needs the MySql dependency.
 
+Creating the volumes directories specific to the website
+```
+mkdir volumes/www.learnintouch/account/data/;
+mkdir volumes/www.learnintouch/account/backup/;
+```
+
 Creating the database
 ```
 cd www.learnintouch
@@ -27,7 +33,12 @@ docker stack ps www_learnintouch
 
 Removing the existing file data specific to the website
 ```
-sudo rm -fr volumes/www.learnintouch/account/data/
+rm -fr volumes/www.learnintouch/account/data/
+```
+
+Creating the website data directories
+```
+https://www.thalasoft.com:83/engine/setup/directories.php
 ```
 
 Copying any existing website data into the website
