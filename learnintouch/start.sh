@@ -13,6 +13,9 @@ source /usr/local/learnintouch/expand-secrets.sh
 # Avoid having to provide the user password on the command line
 export MYSQL_PWD=$DB_ROOT_PASSWORD
 
+export MYSQL_HOME=/usr/local/mariadb/install
+export PATH=$PATH:$MYSQL_HOME/bin
+
 # Start the HTTP server
 /usr/local/apache/bin/apachectl start && tail -f /dev/null
 
