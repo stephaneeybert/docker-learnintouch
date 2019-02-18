@@ -12,6 +12,8 @@ RUN ln -s /usr/local/learnintouch/engine/admin.php admin.php \
   && ln -s /usr/local/learnintouch/engine/cron/backup.sh backup.sh \
   && ln -s /usr/local/learnintouch/engine/cron/refresh_template_models.sh refresh_template_models.sh
 
+COPY phpinfo.php /usr/local/learnintouch/www/thalasoft.com
+
 COPY htaccess /usr/local/learnintouch/www/thalasoft.com/.htaccess
 RUN mkdir /usr/local/learnintouch/www/thalasoft.com/account/setup
 COPY specific.php /usr/local/learnintouch/www/thalasoft.com/account/setup
