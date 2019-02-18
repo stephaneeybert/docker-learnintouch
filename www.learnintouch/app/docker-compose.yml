@@ -10,6 +10,7 @@ services:
       common:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/data:/usr/local/learnintouch/www/learnintouch.com/account/data"
+      - "~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/backup:/usr/local/learnintouch/www/learnintouch.com/account/backup"
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
       - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
       - "~/dev/docker/projects/common/volumes/logs:/usr/local/apache/logs"
