@@ -27,22 +27,3 @@ rm engine.zip
 ```
 Rebuild the image if repackaging
 
-Creating the secrets
-```
-./docker-secrets.sh
-```
-
-Creating the common database
-```
-cd learnintouch
-docker stack deploy --compose-file docker-compose-dev.yml learnintouch
-docker stack rm learnintouch
-```
-
-Creating the common database in production
-```
-cd learnintouch
-docker stack deploy --compose-file docker-compose.yml learnintouch
-docker stack rm learnintouch
-```
-
