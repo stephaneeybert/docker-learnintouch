@@ -1,4 +1,4 @@
-FROM stephaneeybert/www.thalasoft
+FROM stephaneeybert/learnintouch
 
 COPY vhost.conf /tmp
 RUN cat /tmp/vhost.conf >> /usr/local/apache/conf/extra/httpd-vhosts.conf && rm -f /tmp/vhost.conf
