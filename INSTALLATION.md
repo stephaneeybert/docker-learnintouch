@@ -20,10 +20,18 @@ docker pull thalasoft.com:5000/www.thalasoft
 docker pull thalasoft.com:5000/www.folkuniversitet
 ```  
 
-TODO
-Create the databases  
-Create the database and the root user in `mariadb`  
-Create the common database in the `learnintouch` docker
-Create the websites databases in `www.`  
+Create the volume directories
+```
+mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.thalasoft;
+mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.learnintouch;
+mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.folkuniversitet;
+```
+
+Create a link to the engine source code
+```
+cd ~/dev/docker/projects/learnintouch/volumes/;
+ln -s ~/dev/php/projects/learnintouch/engine engine;
+```
 
 Read and follow all the INSTALLATION.md files of the project
+

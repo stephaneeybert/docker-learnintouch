@@ -5,26 +5,6 @@ Have the entry `dev.thalasoft.com` in the virtual host
 Installing the database for the website
 The docker-compose is used only to create and seed the `learnintouch.com` database. For this operation, it only needs the MySql dependency.
 
-Creating the volumes directories specific to the website
-```
-mkdir volumes/www.learnintouch/account/data/;
-mkdir volumes/www.learnintouch/account/backup/;
-```
-
-Creating the database
-```
-cd www.learnintouch
-docker stack deploy --compose-file docker-compose-dev.yml www_learnintouch
-docker stack rm www_learnintouch
-```
-
-Creating the database in production
-```
-cd www.learnintouch
-docker stack deploy --compose-file docker-compose.yml www_learnintouch
-docker stack rm www_learnintouch
-```
-
 View the completion of the installation  
 The `docker stack ps www_learnintouch` command should display an Exit 0 state or a Complete value for the www.learnintouch container
 ```
