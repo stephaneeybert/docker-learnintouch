@@ -27,11 +27,5 @@ mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.learnintouch;
 mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.folkuniversitet;
 ```
 
-Create a link to the engine source code
-```
-cd ~/dev/docker/projects/learnintouch/volumes/;
-ln -s ~/dev/php/projects/learnintouch/engine engine;
-```
-
 Read and follow all the INSTALLATION.md files of the project
 

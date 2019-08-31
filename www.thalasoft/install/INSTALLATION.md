@@ -25,7 +25,7 @@ On the remote
 
 Create the secrets
 ```
-cd ~/dev/docker/projects/learnintouch/www.learnintouch/install/;
+cd ~/dev/docker/projects/learnintouch/www.thalasoft/install/;
 ./docker-secrets.sh
 ```
 

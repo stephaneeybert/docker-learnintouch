@@ -6,6 +6,7 @@ https://dev.thalasoft.com:83/admin.php
 
 Starting the application in swarm mode
 ```
+cd ~/dev/docker/projects/learnintouch/www.thalasoft/app;
 docker stack deploy --compose-file docker-compose.yml www_thalasoft
 ```
 

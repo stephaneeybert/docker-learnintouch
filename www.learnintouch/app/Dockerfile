@@ -16,7 +16,7 @@ ENTRYPOINT ["/bin/bash", "/usr/local/learnintouch/start.sh"]
 # On the droplet
 
 # Viewing the logs
-# cd ~/dev/docker/projects/learnintouch/volumes/logs
+# cd ~/dev/docker/projects/common/volumes/logs
 # tail -400f mariadb.error.log 
 
 # Opening a mysql client

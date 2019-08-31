@@ -9,8 +9,19 @@ mkdir -p ~/dev/docker/projects/learnintouch/learnintouch
 
 On the local
 
+Copy the files
+```
 scp ~/dev/docker/projects/learnintouch/learnintouch/docker-compose.yml stephane@thalasoft.com:~/dev/docker/projects/learnintouch/learnintouch
 scp ~/dev/docker/projects/learnintouch/learnintouch/docker-secrets.sh stephane@thalasoft.com:~/dev/docker/projects/learnintouch/learnintouch
+```
+
+Deploy the source code
+```
+cd /home/stephane/dev/php/projects/learnintouch;
+zip engine.zip engine -r -x "*.git/*";
+scp engine.zip stephane@thalasoft.com:/home/stephane/dev/docker/projects/learnintouch/volumes/
+rm engine.zip
+```
 
 On the remote
 
@@ -32,3 +43,9 @@ docker stack ps learnintouch
 docker stack rm learnintouch
 ```
 
+Unpack the source code
+```
+cd ~/dev/docker/projects/learnintouch/volumes;
+unzip engine.zip;
+rm engine.zip;
+```
