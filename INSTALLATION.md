@@ -6,9 +6,9 @@ Build the images
 Respect their dependencies order  
 cd nodejs-learnintouch; ./build.sh; cd ..;
 cd learnintouch; ./build.sh; cd ..;
-cd www.learnintouch; ./build.sh; cd ..;
-cd www.thalasoft; ./build.sh; cd ..;
-cd www.folkuniversitet; ./build.sh; cd ..;
+cd www.learnintouch/install; ./build.sh; cd ../app; ./build.sh; cd ../..;
+cd www.thalasoft/install; ./build.sh; cd ../app; ./build.sh; cd ../..;
+cd www.folkuniversitet/install; ./build.sh; cd ../app; ./build.sh; cd ../..;
 
 On the remote
 

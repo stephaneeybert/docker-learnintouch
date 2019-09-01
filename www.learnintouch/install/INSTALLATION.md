@@ -40,9 +40,3 @@ docker stack ps www_learnintouch
 docker stack rm www_learnintouch;
 ```
 
-Copy the files TODO
-```
-cp ~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/data/backup/db_learnintouch-structure.sql .
-cp ~/dev/docker/projects/learnintouch/volumes/www.learnintouch/account/data/backup/db_learnintouch.sql .
-```
-

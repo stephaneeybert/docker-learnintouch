@@ -47,5 +47,4 @@ Unpack the source code
 ```
 cd ~/dev/docker/projects/learnintouch/volumes;
 unzip engine.zip;
-rm engine.zip;
 ```
