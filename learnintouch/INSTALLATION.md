@@ -17,9 +17,9 @@ scp ~/dev/docker/projects/learnintouch/learnintouch/docker-secrets.sh stephane@t
 
 Deploy the source code
 ```
-cd /home/stephane/dev/php/projects/learnintouch;
+cd ~/dev/php/projects/learnintouch;
 zip engine.zip engine -r -x "*.git/*";
-scp engine.zip stephane@thalasoft.com:/home/stephane/dev/docker/projects/learnintouch/volumes/
+scp engine.zip stephane@thalasoft.com:~/dev/docker/projects/learnintouch/volumes/
 rm engine.zip
 ```
 
