@@ -19,6 +19,7 @@ Copy some files
 scp ~/dev/docker/projects/learnintouch/www.thalasoft/app/docker-compose.yml stephane@thalasoft.com:~/dev/docker/projects/learnintouch/www.thalasoft/app
 scp ~/dev/docker/projects/learnintouch/www.thalasoft/install/docker-compose.yml stephane@thalasoft.com:~/dev/docker/projects/learnintouch/www.thalasoft/install
 scp ~/dev/docker/projects/learnintouch/www.thalasoft/install/docker-secrets.sh stephane@thalasoft.com:~/dev/docker/projects/learnintouch/www.thalasoft/install
+scp ~/dev/docker/projects/learnintouch/www.learnintouch/install/data.zip stephane@thalasoft.com:~/dev/docker/projects/learnintouch/volumes/www.thalasoft/account
 ```
 
 On the remote
@@ -40,5 +41,12 @@ The command should display an Exit 0 state or a Complete value for the container
 ```
 docker stack ps www_thalasoft
 docker stack rm www_thalasoft
+```
+
+Restaure the website data
+```
+cd ~/dev/docker/projects/learnintouch/volumes/www.thalasoft/account
+unzip data.zip
+rm data.zip
 ```
 
