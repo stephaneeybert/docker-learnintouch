@@ -12,6 +12,8 @@ On the local
 
 Open the website
 ```
+https://www.thalasoft.com:83
+https://www.thalasoft.com:83/admin.php
 https://dev.thalasoft.com:83
 https://dev.thalasoft.com:83/admin.php
 ```
