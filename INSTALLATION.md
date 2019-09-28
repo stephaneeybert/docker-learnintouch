@@ -4,11 +4,13 @@ On the local
 
 Build the images
 Respect their dependencies order  
-cd nodejs-learnintouch; ./build.sh; cd ..;
-cd learnintouch; ./build.sh; cd ..;
-cd www.learnintouch/install; ./build.sh; cd ../app; ./build.sh; cd ../..;
-cd www.thalasoft/install; ./build.sh; cd ../app; ./build.sh; cd ../..;
-cd www.folkuniversitet/install; ./build.sh; cd ../app; ./build.sh; cd ../..;
+```  
+cd ~/dev/docker/projects/learnintouch/nodejs-learnintouch; ./build.sh;
+cd ~/dev/docker/projects/learnintouch/learnintouch; ./build.sh;
+cd ~/dev/docker/projects/learnintouch/www.learnintouch/install; ./build.sh; cd ../app; ./build.sh;
+cd ~/dev/docker/projects/learnintouch/www.thalasoft/install; ./build.sh; cd ../app; ./build.sh;
+cd ~/dev/docker/projects/learnintouch/www.folkuniversitet/install; ./build.sh; cd ../app; ./build.sh;
+```  
 
 On the remote
 
