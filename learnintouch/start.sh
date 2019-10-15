@@ -16,6 +16,10 @@ export MYSQL_PWD=$DB_ROOT_PASSWORD
 export MYSQL_HOME=/usr/local/mariadb/install
 export PATH=$PATH:$MYSQL_HOME/bin
 
+# Grant the host user to access the log
+chown -R $HOST_USER_ID /usr/local/learnintouch/logs/php_error_log
+chgrp -R $HOST_GROUP_ID /usr/local/learnintouch/logs/php_error_log
+
 # Start the HTTP server
 /usr/local/apache/bin/apachectl start && tail -f /dev/null
 
