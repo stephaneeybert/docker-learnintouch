@@ -42,7 +42,7 @@ COPY expand-secrets.sh /usr/local/learnintouch/
 
 COPY db_engine-db.sql /usr/local/learnintouch/
 COPY db_engine-structure.sql /usr/local/learnintouch/
-COPY db_engine.sql /usr/local/learnintouch/
+COPY db_engine-data.sql /usr/local/learnintouch/
 
 COPY engine-db-seed.sh /usr/local/learnintouch/
 COPY start.sh /usr/local/learnintouch/

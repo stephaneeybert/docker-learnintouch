@@ -15,7 +15,7 @@ sed -e "s/DB_PASSWORD/$LEARNINTOUCH_DB_PASSWORD/g" < /usr/local/learnintouch/db_
 
 /usr/local/mariadb/install/bin/mysql --protocol=tcp -h mysql -P 3306 -u root -v < /usr/local/learnintouch/db_engine-db-resolved.sql
 /usr/local/mariadb/install/bin/mysql db_engine --protocol=tcp -h mysql -P 3306 -u root -v < /usr/local/learnintouch/db_engine-structure.sql
-/usr/local/mariadb/install/bin/mysql db_engine --protocol=tcp -h mysql -P 3306 -u root -v < /usr/local/learnintouch/db_engine.sql
+/usr/local/mariadb/install/bin/mysql db_engine --protocol=tcp -h mysql -P 3306 -u root -v < /usr/local/learnintouch/db_engine-data.sql
 
 chown -R $HOST_USER_ID /usr/local/mariadb/install/data
 chgrp -R $HOST_GROUP_ID /usr/local/mariadb/install/data
