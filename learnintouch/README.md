@@ -27,3 +27,7 @@ rm engine.zip
 ```
 Rebuild the image if repackaging
 
+TODO:
+Have the document root of the domains outside of the docker container so as to have them accessible by the letsencrypt cron job for certificate renewal... Or use letsencrypt from within a container...
+The tar archive of the backup is saved in the container instead of in the website volume. Move it under the website volume data/ directory.
+
