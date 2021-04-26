@@ -6,7 +6,7 @@ services:
       - "85:80"
       - "86:443"
     networks:
-      folkuniversitet:
+      learnintouch:
       common:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/www.folkuniversitet/account/data:/usr/local/learnintouch/www/folkuniversitet/account/data"
@@ -68,8 +68,8 @@ services:
       timeout: 10s
       retries: 3
 networks:
-  folkuniversitet:
-    name: folkuniversitet
+  learnintouch:
+    name: learnintouch
   common:
     external: true
     name: common

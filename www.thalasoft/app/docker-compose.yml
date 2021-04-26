@@ -6,7 +6,7 @@ services:
       - "81:80"
       - "83:443"
     networks:
-      thalasoft:
+      learnintouch:
       common:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/www.thalasoft/account/data:/usr/local/learnintouch/www/thalasoft.com/account/data"
@@ -49,7 +49,7 @@ services:
       - "9001:9001"
       - "9002:9002"
     networks:
-      thalasoft:
+      learnintouch:
       common:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
@@ -68,8 +68,8 @@ services:
       timeout: 10s
       retries: 3
 networks:
-  thalasoft:
-    name: thalasoft
+  learnintouch:
+    name: learnintouch
   common:
     external: true
     name: common

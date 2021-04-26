@@ -9,6 +9,14 @@ mkdir -p ~/dev/docker/projects/learnintouch/learnintouch
 
 On the local
 
+Create a docker-secrets.sh file and run it
+```
+cd ~/dev/docker/projects/learnintouch;
+vi docker-secrets.sh
+chmod +x docker-secrets.sh
+./docker-secrets.sh
+```
+
 Copy the files
 ```
 scp ~/dev/docker/projects/learnintouch/learnintouch/docker-compose.yml stephane@thalasoft.com:~/dev/docker/projects/learnintouch/learnintouch
