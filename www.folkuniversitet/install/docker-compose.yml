@@ -7,6 +7,8 @@ services:
       common:
     volumes:
       - "~/dev/docker/projects/common/volumes/database/mariadb/data:/usr/local/mariadb/install/data"
+      - "~/dev/docker/projects/learnintouch/volumes/www.europasprak/account/backup:/usr/local/learnintouch/www/folkuniversitet.europasprak.com/account/backup"
+      - "~/dev/docker/projects/learnintouch/volumes/www.europasprak/account/data:/usr/local/learnintouch/www/folkuniversitet.europasprak.com/account/data"
     environment:
       HOST_USER_ID: ${CURRENT_UID}
       HOST_GROUP_ID: ${CURRENT_GID}      
