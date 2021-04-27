@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.30, for Linux (x86_64)
 --
--- Host: mysql    Database: db_learnintouch
+-- Host: mysql    Database: db_europasprak
 -- ------------------------------------------------------
 -- Server version	5.6.30-log
 
@@ -746,7 +746,7 @@ CREATE TABLE `elearning_question_result` (
   CONSTRAINT `elearning_question_result_ibfk_1` FOREIGN KEY (`elearning_result_id`) REFERENCES `elearning_result` (`id`),
   CONSTRAINT `elearning_question_result_ibfk_2` FOREIGN KEY (`elearning_question_id`) REFERENCES `elearning_question` (`id`),
   CONSTRAINT `elearning_question_result_ibfk_3` FOREIGN KEY (`elearning_answer_id`) REFERENCES `elearning_answer` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2280 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2381 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2419,7 +2419,7 @@ CREATE TABLE `statistics_visit` (
   KEY `visitor_host_address` (`visitor_host_address`(191)),
   KEY `visitor_browser` (`visitor_browser`(191)),
   KEY `visitor_referer` (`visitor_referer`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=137830 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=137829 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2435,7 +2435,7 @@ CREATE TABLE `template_container` (
   `template_model_id` bigint(20) unsigned NOT NULL,
   `row_nb` int(10) unsigned NOT NULL,
   `cell_nb` int(10) unsigned NOT NULL,
-  `template_property_set_id` bigint(20) unsigned,
+  `template_property_set_id` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `template_model_id` (`template_model_id`),
@@ -2730,6 +2730,4 @@ CREATE TABLE `webpage_navmenu` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-31  8:28:01
-
-commit;
+-- Dump completed on 2017-10-17  9:17:57

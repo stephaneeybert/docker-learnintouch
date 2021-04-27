@@ -28,8 +28,8 @@ docker pull thalasoft.com:5000/www.fhs
 
 Create the volume directories
 ```
-mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.thalasoft;
 mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.learnintouch;
+mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.thalasoft;
 mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.folkuniversitet;
 mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.europasprak;
 mkdir -p ~/dev/docker/projects/learnintouch/volumes/www.fhs;

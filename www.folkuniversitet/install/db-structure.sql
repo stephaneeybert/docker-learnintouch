@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.30, for Linux (x86_64)
 --
--- Host: mysql    Database: db_folkuniversitet
+-- Host: mysql    Database: db_europasprak
 -- ------------------------------------------------------
 -- Server version	5.6.30-log
 
@@ -537,6 +537,7 @@ CREATE TABLE `elearning_exercise_page` (
   `text_max_height` int(10) unsigned NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `audio` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `autostart` tinyint(1) NOT NULL,
   `video` varchar(1024) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `video_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `question_type` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
