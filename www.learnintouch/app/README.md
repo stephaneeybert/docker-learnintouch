@@ -1,7 +1,7 @@
 Opening the website
 ```
-https://dev.thalasoft.com:83
-https://dev.thalasoft.com:83/admin.php
+https://dev.learnintouch.com:83
+https://dev.learnintouch.com:83/admin.php
 ```
 
 Starting the application in swarm mode
