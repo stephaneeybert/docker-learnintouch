@@ -15,7 +15,10 @@ services:
       - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
       - "~/dev/docker/projects/common/volumes/logs:/usr/local/apache/logs"
       - "~/dev/docker/projects/common/volumes/logs:/usr/local/learnintouch/logs"
+    user: "${CURRENT_UID}:${CURRENT_GID}"
     environment:
+      HOST_USER_ID: ${CURRENT_UID}
+      HOST_GROUP_ID: ${CURRENT_GID}
       DB_HOST: mysql
       DB_PORT: 3306
       WWW_THALASOFT_DB_NAME: db_thalasoft
@@ -55,6 +58,7 @@ services:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
       - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
       - "~/dev/docker/projects/common/volumes/logs:/usr/local/learnintouch/logs"
+    user: "${CURRENT_UID}:${CURRENT_GID}"
     deploy:
       replicas: 1
       restart_policy:

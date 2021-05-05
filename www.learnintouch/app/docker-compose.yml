@@ -15,14 +15,17 @@ services:
       - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
       - "~/dev/docker/projects/common/volumes/logs:/usr/local/apache/logs"
       - "~/dev/docker/projects/common/volumes/logs:/usr/local/learnintouch/logs"
+    user: "${CURRENT_UID}:${CURRENT_GID}"
     environment:
+      HOST_USER_ID: ${CURRENT_UID}
+      HOST_GROUP_ID: ${CURRENT_GID}
       DB_HOST: mysql
       DB_PORT: 3306
       WWW_LEARNINTOUCH_DB_NAME: db_learnintouch
       WWW_LEARNINTOUCH_DB_USER: learnintouch
       WWW_LEARNINTOUCH_NAME: learnintouch
-      WWW_LEARNINTOUCH_DOMAIN: dev.thalasoft.com
-      WWW_LEARNINTOUCH_SCHEME: https
+      WWW_LEARNINTOUCH_DOMAIN: dev.learnintouch.com
+      WWW_LEARNINTOUCH_SCHEME: http
       STAFF_EMAIL: mittiprovence@yahoo.se
       NODEJS_SOCKET_PORT: 9002
     secrets:
@@ -55,6 +58,10 @@ services:
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
       - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
       - "~/dev/docker/projects/common/volumes/logs:/usr/local/learnintouch/logs"
+    user: "${CURRENT_UID}:${CURRENT_GID}"
+    environment:
+      HOST_USER_ID: ${CURRENT_UID}
+      HOST_GROUP_ID: ${CURRENT_GID}        
     deploy:
       replicas: 1
       restart_policy:
