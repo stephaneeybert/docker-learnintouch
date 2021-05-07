@@ -1,5 +1,11 @@
 Installation
 
+Add the secrets to expand
+In the `learnintouch/learnintouch/start.sh` file add an entry for each new secret
+```
+export WWW_FOLKUNIVERSITET_DB_PASSWORD={{DOCKER-SECRET:WWW_FOLKUNIVERSITET_DB_PASSWORD}}
+```
+
 On the remote
 
 Have the entry `folkuniversitet.thalasoft.com` in the virtual host
