@@ -1,0 +1,93 @@
+version: "3.7"
+services:
+  www:
+    image: localhost:5000/www.europasprak
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      learnintouch:
+      common:
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/www.europasprak/account/data:/usr/local/learnintouch/www/europasprak.com/account/data"
+      - "~/dev/docker/projects/learnintouch/volumes/www.europasprak/account/backup:/usr/local/learnintouch/www/europasprak.com/account/backup"
+      - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
+      - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/europasprak.com:/usr/local/learnintouch/letsencrypt"
+      - "~/dev/docker/projects/common/volumes/logs:/usr/local/apache/logs"
+      - "~/dev/docker/projects/common/volumes/logs:/usr/local/learnintouch/logs"
+    user: "${CURRENT_UID}:${CURRENT_GID}"
+    environment:
+      HOST_USER_ID: ${CURRENT_UID}
+      HOST_GROUP_ID: ${CURRENT_GID}
+      DB_HOST: mysql
+      DB_PORT: 3306
+      WWW_EUROPASPRAK_DB_NAME: db_europasprak
+      WWW_EUROPASPRAK_DB_USER: europasprak
+      WWW_EUROPASPRAK_NAME: europasprak
+      WWW_EUROPASPRAK_DOMAIN: www.europasprak.com
+      WWW_EUROPASPRAK_SCHEME: http
+      STAFF_EMAIL: mittiprovence@yahoo.se
+      NODEJS_SOCKET_PORT: 9002
+    secrets:
+      - DB_ROOT_PASSWORD
+      - LEARNINTOUCH_DB_NAME
+      - LEARNINTOUCH_DB_USER
+      - LEARNINTOUCH_DB_PASSWORD
+      - WWW_EUROPASPRAK_DB_PASSWORD
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3 
+        window: 10s
+    healthcheck:
+      test: curl --fail http://127.0.0.1:80/engine/ping.php || exit 1
+      interval: 5s
+      timeout: 10s
+      retries: 3  
+  nodejs:
+    image: localhost:5000/nodejs-learnintouch
+    ports:
+      - "9001:9001"
+      - "9002:9002"
+    networks:
+      learnintouch:
+      common:
+    volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
+      - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
+      - "~/dev/docker/projects/common/volumes/logs:/usr/local/learnintouch/logs"
+    user: "${CURRENT_UID}:${CURRENT_GID}"
+    environment:
+      HOST_USER_ID: ${CURRENT_UID}
+      HOST_GROUP_ID: ${CURRENT_GID}        
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3 
+        window: 10s
+    healthcheck:
+      test: curl --fail http://127.0.0.1:9001/ping || exit 1
+      interval: 5s
+      timeout: 10s
+      retries: 3  
+networks:
+  learnintouch:  
+    name: learnintouch
+  common:
+    external: true
+    name: common
+secrets:
+  DB_ROOT_PASSWORD:
+    external: true
+  LEARNINTOUCH_DB_NAME:
+    external: true
+  LEARNINTOUCH_DB_USER:
+    external: true
+  LEARNINTOUCH_DB_PASSWORD:
+    external: true
+  WWW_EUROPASPRAK_DB_PASSWORD:
+    external: true
