@@ -44,6 +44,11 @@ Create the secrets
 cd ~/dev/docker/projects/learnintouch/learnintouch;
 ./docker-secrets.sh
 ```
+ 
+Create some directories
+```
+mkdir ~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com
+```
 
 Create the common database
 ```

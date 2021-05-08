@@ -38,6 +38,12 @@ cd ~/dev/docker/projects/learnintouch/www.europasprak/install/;
 ./docker-secrets.sh
 ```
 
+Create the website database
+```
+cd ~/dev/docker/projects/learnintouch/www.europasprak/install;
+docker stack deploy --compose-file docker-compose.yml www_fhs
+```
+
 Restaure the website image and audio data
 ```
 cp data.tar ~/dev/docker/projects/learnintouch/volumes/www.europasprak/account
