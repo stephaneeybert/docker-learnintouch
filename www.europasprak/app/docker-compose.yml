@@ -11,8 +11,8 @@ services:
     volumes:
       - "~/dev/docker/projects/learnintouch/volumes/www.europasprak/account/data:/usr/local/learnintouch/www/europasprak.com/account/data"
       - "~/dev/docker/projects/learnintouch/volumes/www.europasprak/account/backup:/usr/local/learnintouch/www/europasprak.com/account/backup"
+      - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
       - "~/dev/docker/projects/learnintouch/volumes/engine:/usr/local/learnintouch/engine"
-      - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/europasprak.com:/usr/local/learnintouch/letsencrypt"
       - "~/dev/docker/projects/common/volumes/logs:/usr/local/apache/logs"
       - "~/dev/docker/projects/common/volumes/logs:/usr/local/learnintouch/logs"
     user: "${CURRENT_UID}:${CURRENT_GID}"
