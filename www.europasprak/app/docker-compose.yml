@@ -27,7 +27,7 @@ services:
       WWW_EUROPASPRAK_DOMAIN: www.europasprak.com
       WWW_EUROPASPRAK_SCHEME: http
       STAFF_EMAIL: mittiprovence@yahoo.se
-      NODEJS_SOCKET_PORT: 9002
+      NODEJS_SOCKET_PORT: 9001
     secrets:
       - DB_ROOT_PASSWORD
       - LEARNINTOUCH_DB_NAME

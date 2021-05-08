@@ -27,7 +27,7 @@ services:
       WWW_LEARNINTOUCH_DOMAIN: dev.learnintouch.com
       WWW_LEARNINTOUCH_SCHEME: http
       STAFF_EMAIL: mittiprovence@yahoo.se
-      NODEJS_SOCKET_PORT: 9002
+      NODEJS_SOCKET_PORT: 9001
     secrets:
       - DB_ROOT_PASSWORD
       - LEARNINTOUCH_DB_NAME
