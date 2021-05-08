@@ -1,7 +1,7 @@
 version: "3.7"
 services:
-  www:
-    image: localhost:5000/www.europasprak
+  www_europasprak:
+    image: europasprak.com:5000/www.europasprak
     ports:
       - "80:80"
       - "443:443"
@@ -47,7 +47,7 @@ services:
       timeout: 10s
       retries: 3  
   nodejs:
-    image: localhost:5000/nodejs-learnintouch
+    image: europasprak.com:5000/nodejs-learnintouch
     ports:
       - "9001:9001"
       - "9002:9002"
