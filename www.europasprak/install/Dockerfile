@@ -1,30 +1,42 @@
 FROM stephaneeybert/learnintouch
 
+# www.europasprak.com
 COPY vhost.conf /tmp
 RUN cat /tmp/vhost.conf >> /usr/local/apache/conf/extra/httpd-vhosts.conf && rm -f /tmp/vhost.conf
-
-RUN mkdir -p /usr/local/learnintouch/www/europasprak.com/account
-WORKDIR /usr/local/learnintouch/www/europasprak.com
-RUN ln -s /usr/local/learnintouch/engine/admin.php admin.php \
-  && ln -s /usr/local/learnintouch/engine engine \
-  && ln -s /usr/local/learnintouch/engine/index.php index.php \
-  && ln -s /usr/local/learnintouch/engine/cron/cleanup.sh cleanup.sh \
-  && ln -s /usr/local/learnintouch/engine/cron/backup.sh backup.sh \
-  && ln -s /usr/local/learnintouch/engine/cron/refresh_template_models.sh refresh_template_models.sh
-
-COPY phpinfo.php /usr/local/learnintouch/www/europasprak.com
-
+RUN mkdir -p /usr/local/learnintouch/www/europasprak.com/account/setup
+COPY phpinfo.php /usr/local/learnintouch/www/europasprak.com/
+COPY website-db-seed.sh /usr/local/learnintouch/www/europasprak.com/
+COPY db-database.sql /usr/local/learnintouch/www/europasprak.com/
+COPY db-structure.sql /usr/local/learnintouch/www/europasprak.com/
 COPY htaccess /usr/local/learnintouch/www/europasprak.com/.htaccess
-RUN mkdir /usr/local/learnintouch/www/europasprak.com/account/setup
-COPY specific.php /usr/local/learnintouch/www/europasprak.com/account/setup
+COPY specific.php /usr/local/learnintouch/www/europasprak.com/account/setup/
+
+RUN ln -s /usr/local/learnintouch/engine/admin.php /usr/local/learnintouch/www/europasprak.com/admin.php \
+  && ln -s /usr/local/learnintouch/engine /usr/local/learnintouch/www/europasprak.com/engine \
+  && ln -s /usr/local/learnintouch/engine/index.php /usr/local/learnintouch/www/europasprak.com/index.php \
+  && ln -s /usr/local/learnintouch/engine/cron/cleanup.sh /usr/local/learnintouch/www/europasprak.com/cleanup.sh \
+  && ln -s /usr/local/learnintouch/engine/cron/backup.sh /usr/local/learnintouch/www/europasprak.com/backup.sh \
+  && ln -s /usr/local/learnintouch/engine/cron/refresh_template_models.sh /usr/local/learnintouch/www/europasprak.com/refresh_template_models.sh
+
+# fhs.europasprak.com
+COPY vhost.conf.fhs /tmp
+RUN cat /tmp/vhost.conf.fhs >> /usr/local/apache/conf/extra/httpd-vhosts.conf && rm -f /tmp/vhost.conf.fhs
+RUN mkdir -p /usr/local/learnintouch/www/fhs.europasprak.com/account/setup
+RUN mkdir -p /usr/local/learnintouch/www/fhs.europasprak.com/account/setup
+COPY htaccess.fhs /usr/local/learnintouch/www/fhs.europasprak.com/.htaccess
+COPY specific.php.fhs /usr/local/learnintouch/www/fhs.europasprak.com/account/setup/specific.php
+
+RUN ln -s /usr/local/learnintouch/engine/admin.php /usr/local/learnintouch/www/fhs.europasprak.com/admin.php \
+  && ln -s /usr/local/learnintouch/engine /usr/local/learnintouch/www/fhs.europasprak.com/engine \
+  && ln -s /usr/local/learnintouch/engine/index.php /usr/local/learnintouch/www/fhs.europasprak.com/index.php \
+  && ln -s /usr/local/learnintouch/engine/cron/cleanup.sh /usr/local/learnintouch/www/fhs.europasprak.com/cleanup.sh \
+  && ln -s /usr/local/learnintouch/engine/cron/backup.sh /usr/local/learnintouch/www/fhs.europasprak.com/backup.sh \
+  && ln -s /usr/local/learnintouch/engine/cron/refresh_template_models.sh /usr/local/learnintouch/www/fhs.europasprak.com/refresh_template_models.sh
 
 RUN chown -R apache:apache /usr/local/learnintouch/ \
   && chmod -R 755 /usr/local/learnintouch/
 
-COPY db-database.sql /usr/local/learnintouch/www/europasprak.com/
-COPY db-structure.sql /usr/local/learnintouch/www/europasprak.com/
-
-COPY website-db-seed.sh /usr/local/learnintouch/www/europasprak.com/
+WORKDIR /usr/local/learnintouch/www/europasprak.com
 
 #ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
 ENTRYPOINT ["/bin/bash", "/usr/local/learnintouch/www/europasprak.com/website-db-seed.sh"]

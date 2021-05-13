@@ -9,6 +9,8 @@ services:
       learnintouch:
       common:
     volumes:
+      - "~/dev/docker/projects/learnintouch/volumes/www.fhs/account/data:/usr/local/learnintouch/www/fhs.europasprak.com/account/data"
+      - "~/dev/docker/projects/learnintouch/volumes/www.fhs/account/backup:/usr/local/learnintouch/www/fhs.europasprak.com/account/backup"      
       - "~/dev/docker/projects/learnintouch/volumes/www.europasprak/account/data:/usr/local/learnintouch/www/europasprak.com/account/data"
       - "~/dev/docker/projects/learnintouch/volumes/www.europasprak/account/backup:/usr/local/learnintouch/www/europasprak.com/account/backup"
       - "~/dev/docker/projects/common/volumes/letsencrypt/certbot/conf/live/thalasoft.com:/usr/local/learnintouch/letsencrypt"
@@ -21,6 +23,11 @@ services:
       HOST_GROUP_ID: ${CURRENT_GID}
       DB_HOST: mysql
       DB_PORT: 3306
+      WWW_FHS_DB_NAME: db_fhs
+      WWW_FHS_DB_USER: fhs
+      WWW_FHS_NAME: fhs
+      WWW_FHS_DOMAIN: fhs.europasprak.com
+      WWW_FHS_SCHEME: http      
       WWW_EUROPASPRAK_DB_NAME: db_europasprak
       WWW_EUROPASPRAK_DB_USER: europasprak
       WWW_EUROPASPRAK_NAME: europasprak
@@ -33,6 +40,7 @@ services:
       - LEARNINTOUCH_DB_NAME
       - LEARNINTOUCH_DB_USER
       - LEARNINTOUCH_DB_PASSWORD
+      - WWW_FHS_DB_PASSWORD
       - WWW_EUROPASPRAK_DB_PASSWORD
     deploy:
       replicas: 1
@@ -96,6 +104,8 @@ secrets:
   LEARNINTOUCH_DB_USER:
     external: true
   LEARNINTOUCH_DB_PASSWORD:
+    external: true
+  WWW_FHS_DB_PASSWORD:
     external: true
   WWW_EUROPASPRAK_DB_PASSWORD:
     external: true
