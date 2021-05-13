@@ -1,0 +1,2 @@
+00 01 * * * /usr/local/learnintouch/engine/cron/backup_all.sh
+
