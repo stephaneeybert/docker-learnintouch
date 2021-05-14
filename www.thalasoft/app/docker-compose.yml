@@ -71,13 +71,6 @@ services:
       interval: 5s
       timeout: 10s
       retries: 3
-  cron:
-    image: localhost:5000/learnintouch-cron
-    networks:
-      learnintouch:
-      common:
-    volumes:
-      - "~/dev/docker/projects/common/volumes/logs:/usr/local/learnintouch/logs"
 networks:
   learnintouch:
     name: learnintouch

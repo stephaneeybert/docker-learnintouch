@@ -52,6 +52,12 @@ RUN chown -R apache:apache /usr/local/learnintouch/ \
 
 COPY httpd-vhosts.conf /usr/local/apache/conf/extra
 
+# Using supercronic as a cron scheduler
+# See https://github.com/aptible/supercronic/
+COPY supercronic-linux-amd64 /usr/local/learnintouch
+COPY learnintouch.cron /usr/local/learnintouch/
+RUN chmod 0644 /usr/local/learnintouch/learnintouch.cron
+
 #ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
 ENTRYPOINT ["/bin/bash", "/usr/local/learnintouch/engine-db-seed.sh"]
 

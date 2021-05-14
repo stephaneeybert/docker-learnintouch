@@ -18,6 +18,9 @@ export MYSQL_PWD=$DB_ROOT_PASSWORD
 export MYSQL_HOME=/usr/local/mariadb/install
 export PATH=$PATH:$MYSQL_HOME/bin
 
+# Run a cron job
+/usr/local/learnintouch/supercronic-linux-amd64 /usr/local/learnintouch/learnintouch.cron &
+
 # Start the HTTP server
 /usr/local/apache/bin/apachectl start && tail -f /dev/null
 
