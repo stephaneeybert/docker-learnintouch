@@ -23,4 +23,3 @@ define('DB_USER', getenv("WWW_EUROPASPRAK_DB_USER"));
 define('DB_PASS', getenv("WWW_EUROPASPRAK_DB_PASSWORD"));
 
 ?>
-

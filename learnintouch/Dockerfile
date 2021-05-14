@@ -39,6 +39,8 @@ RUN mkdir /usr/local/learnintouch/logs \
 RUN groupadd -f apache && useradd -d /usr/local/learnintouch/ -g apache apache
 
 COPY expand-secrets.sh /usr/local/learnintouch/
+#COPY expand-all-secrets.sh /usr/local/learnintouch/ TODO DRY start and ~/dev/php/projects/learnintouch/engine/cron/backup.sh
+#RUN chmod 755 /usr/local/learnintouch/expand-all-secrets.sh
 
 COPY db_engine-db.sql /usr/local/learnintouch/
 COPY db_engine-structure.sql /usr/local/learnintouch/

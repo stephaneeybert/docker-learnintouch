@@ -23,4 +23,3 @@ define('DB_USER', getenv("WWW_THALASOFT_DB_USER"));
 define('DB_PASS', getenv("WWW_THALASOFT_DB_PASSWORD"));
 
 ?>
-
