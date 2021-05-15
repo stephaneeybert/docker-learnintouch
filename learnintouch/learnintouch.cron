@@ -1,2 +1,2 @@
-00 01 * * * /usr/local/learnintouch/engine/cron/backup-all-websites.sh
+00 01 * * * /usr/local/learnintouch/engine/cron/backup-all-websites.sh >> /usr/local/learnintouch/logs/cron.log 2>&1
 
