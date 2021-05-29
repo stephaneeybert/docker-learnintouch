@@ -43,7 +43,7 @@ services:
         window: 10s
     healthcheck:
       test: curl --fail http://127.0.0.1:80/engine/ping.php || exit 1
-      interval: 5s
+      interval: 10s
       timeout: 10s
       retries: 3
   nodejs:
