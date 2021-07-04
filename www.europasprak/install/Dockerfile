@@ -22,7 +22,6 @@ RUN ln -s /usr/local/learnintouch/engine/admin.php /usr/local/learnintouch/www/e
 COPY vhost.conf.fhs /tmp
 RUN cat /tmp/vhost.conf.fhs >> /usr/local/apache/conf/extra/httpd-vhosts.conf && rm -f /tmp/vhost.conf.fhs
 RUN mkdir -p /usr/local/learnintouch/www/fhs.europasprak.com/account/setup
-RUN mkdir -p /usr/local/learnintouch/www/fhs.europasprak.com/account/setup
 COPY htaccess.fhs /usr/local/learnintouch/www/fhs.europasprak.com/.htaccess
 COPY specific.php.fhs /usr/local/learnintouch/www/fhs.europasprak.com/account/setup/specific.php
 
