@@ -76,12 +76,12 @@ services:
         delay: 5s
         max_attempts: 3
         window: 30s
-      labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.nodejs.rule=Host(`dev.learnintouch.com`)"
-        - "traefik.http.routers.nodejs.entrypoints=web"
-#        - "traefik.http.routers.nodejs.entrypoints=websecure"
-        - "traefik.http.services.nodejs.loadbalancer.server.port=9001"
+#      labels:
+#        - "traefik.enable=true"
+#        - "traefik.http.routers.nodejs.rule=Host(`dev.learnintouch.com`)"
+#        - "traefik.http.routers.nodejs.entrypoints=web"
+##        - "traefik.http.routers.nodejs.entrypoints=websecure"
+#        - "traefik.http.services.nodejs.loadbalancer.server.port=9001"
         # Doing a healthcheck
 #        - "traefik.http.services.nodejs.loadbalancer.healthcheck.path=/ping"
 #        - "traefik.http.services.nodejs.loadbalancer.healthcheck.interval=10s"
