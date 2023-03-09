@@ -2,6 +2,9 @@ version: "3.9"
 services:
   www_europasprak:
     image: europasprak.com:5000/www.europasprak
+    ports:
+      - "80:80"
+      - "443:443"
     networks:
       common:
     volumes:

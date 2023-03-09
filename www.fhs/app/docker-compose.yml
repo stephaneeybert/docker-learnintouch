@@ -4,7 +4,7 @@ services:
     image: europasprak.com:5000/www.fhs
     ports:
       - "80:80"
-      - "443:443"
+      - "444:443"
     networks:
       learnintouch:
       common:

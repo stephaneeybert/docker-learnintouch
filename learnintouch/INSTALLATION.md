@@ -11,7 +11,7 @@ On the local
 
 Create a docker-secrets.sh file and run it
 ```
-cd ~/dev/docker/projects/learnintouch;
+cd ~/dev/docker/projects/learnintouch/learnintouch;
 vi docker-secrets.sh
 chmod +x docker-secrets.sh
 ./docker-secrets.sh

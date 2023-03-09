@@ -4,7 +4,7 @@ services:
     image: thalasoft.com:5000/www.folkuniversitet
     ports:
       - "85:80"
-      - "86:443"
+      - "445:443"
     networks:
       learnintouch:
       common:

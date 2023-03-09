@@ -1,4 +1,4 @@
-FROM stephaneeybert/php:7.3.9
+FROM stephaneeybert/php:8.1.15
 
 
 # Install some locales

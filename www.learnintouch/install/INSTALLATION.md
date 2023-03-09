@@ -43,7 +43,7 @@ docker stack deploy --compose-file docker-compose.yml www_learnintouch;
 View the completion of the installation  
 The command should display an Exit 0 state or a Complete value for the container
 ```
-docker stack ps www_learnintouch
+docker stack ps www_learnintouch;
 docker stack rm www_learnintouch;
 ```
 
